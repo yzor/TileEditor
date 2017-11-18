@@ -1,0 +1,67 @@
+canvas{
+    background: red;
+    
+  }
+  
+  canvas{
+    box-shadow:0 0 0 1px gold;
+  }
+  
+  #palette{
+    position: fixed;
+    top: 0;
+    right: 0;
+    transition: 200ms;
+      transform: translateX(30px);
+  }
+  #palette:hover{
+  
+  
+    transform: translateX(0px);
+  }
+  .samples{
+     transition: 100ms;
+    width: 40px;
+    height: 30px;
+    /* border:1px solid; */
+    /* margin: 10px; */
+  
+    box-shadow: inset 0px 4px 8px -4px rgba(0,0,0,1);
+  }
+  #sample1{background: #E74D41;}
+  #sample2{background: #EB4078;}
+  #sample3{background: #AA46BB;}
+  #sample4{background: #7C57C1;}
+  #sample5{background: #5D6CC0;}
+  #sample6{background: #738EFB;}
+  #sample7{background: #29B4F6;}
+  #sample8{background: #26C3D9;}
+  #sample9{background: #26A498;}
+  #sample10{background: #2BAE2B;}
+  #sample11{background: #9BCB66;}
+  #sample12{background: #D2DF56;}
+  #sample13{background: #FCEC57;}
+  #sample14{background: #FDC828;}
+  #sample15{background: #FDA226;}
+  
+  body .samples.act,body .samples:hover{
+    transform: scale(1.2);
+    z-index: 23;
+    position: relative;
+     box-shadow: inset 0px 4px 0px -4px rgba(0,0,0,1)
+       ,3px 0px 13px -2px rgba(0,0,0,1)
+       ;
+  }
+  body .samples.act{
+    /* width: 40px; */
+    /* left: -10px; */
+    /* outline:7px solid; */
+  
+    /* box-shadow: inset 0 0 0px 2px rgba(0,0,0,0.8); */
+  }
+  
+  body{
+    background: #333;
+  }
+  
+  
