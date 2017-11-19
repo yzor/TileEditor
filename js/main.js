@@ -234,10 +234,10 @@ function fromIn(x, y, x2, y2, value) {
 // fromIn2(8,9,11,16,"blue");
 
 
-fromIn2(1, 1, 10, 9, "blue");
-fromIn2(2, 3, 9, 3, "#FDA226");
-fromIn2(8, 2, 8, 5, "#FDA226");
-fromIn2(3, 7, 7, 7, "#EB4078");
+// fromIn2(1, 1, 10, 9, "blue");
+// fromIn2(2, 3, 9, 3, "#FDA226");
+// fromIn2(8, 2, 8, 5, "#FDA226");
+// fromIn2(3, 7, 7, 7, "#EB4078");
 
 
 

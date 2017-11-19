@@ -1,2 +1,3 @@
-console.clear();
-console.log(" я родился");
+// console.clear();
+// console.log(" я родился");
+//#TODO узнать можно ли задавать несколько имён на канве как классы с css      
