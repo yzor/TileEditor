@@ -1,11 +1,11 @@
 var layerRawImg = new Konva.Layer(); //слой для изображения
 var layerRawResize = new Konva.Layer(); //слой для изменения размера
-var groupResize;
+var groupResize, ImageRawKonva;
 var ImageRaw = new Image(); //создаём изображение
 ImageRaw.src = 'http://yzorrykodelie.ru/wp-content/uploads/2016/03/2.png';
 ImageRaw.onload = function () { //дейтвие при загрузке изображения
   console.log(ImageRaw.height, ImageRaw.width);
-  var ImageRawKonva = new Konva.Image({ //изображение
+  ImageRawKonva = new Konva.Image({ //изображение
     image: ImageRaw,
     width: ImageRaw.width,
     height: ImageRaw.height,
@@ -21,8 +21,6 @@ ImageRaw.onload = function () { //дейтвие при загрузке изо�
   });
   groupRaw.add(ImageRawKonva); //добавляем сырьевое изображение  в группу
   layerRawImg.add(groupRaw); //и на слой
-  // group.get('.topRight')[0]
-
   groupResize = groupRaw.clone({ //группа для изменения размера
     draggable: true
   });
@@ -50,8 +48,10 @@ ImageRaw.onload = function () { //дейтвие при загрузке изо�
   addAnchor(groupResize, 190, 0, 'topRight');
   addAnchor(groupResize, 190, 150, 'bottomRight');
   addAnchor(groupResize, 0, 150, 'bottomLeft');
+  resizeOFF();
   stageEditor.add(layerRawResize, layerRawImg);
   layerRawImg.moveToBottom();
+
 };
 
 
@@ -249,21 +249,22 @@ function addAnchor(group, x, y, name) {
 
 
 
-
+//вкл редактирование
 function resizeON() {
-  console.warn("ON"); 
+  // console.warn("ON"); 
     groupResize.show();
+    ImageRawKonva.setStrokeWidth(6);   
     stageEditor.draw();
 }
-
+//выкл редактирование
 function resizeOFF() {
-  console.error("OFF");
+  // console.error("OFF");
   groupResize.hide();
+  // ImageRawKonva.setX(10);
+  ImageRawKonva.setStrokeWidth();
   stageEditor.draw();
 }
-
-
-
+//включаем трансформацию по чекбоксу
 $(function () { 
   $("#resize").change(function () {
     if ($("#resize").prop("checked")) { 
