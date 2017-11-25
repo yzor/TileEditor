@@ -32,6 +32,73 @@ path.s11 = s11;
 path.s12 = s12;
 path.s13 = s13;
 path.s14 = s14;
+
+
+path.s15 = s1;
+path.s16 = s2;
+path.s17 = s3;
+path.s18 = s4;
+path.s19 = s5;
+
+path.s20 = s10;
+path.s21 = s1;
+path.s22 = s2;
+path.s23 = s3;
+path.s24 = s4;
+path.s25 = s5;
+path.s26 = s6;
+path.s27 = s7;
+path.s28 = s8;
+path.s29 = s9;
+
+path.s30 = s10;
+path.s31 = s1;
+path.s32 = s2;
+path.s33 = s3;
+path.s34 = s4;
+path.s35 = s5;
+path.s36 = s6;
+path.s37 = s7;
+path.s38 = s8;
+path.s39 = s9;
+
+path.s40 = s10;
+path.s41 = s1;
+path.s42 = s2;
+path.s43 = s3;
+path.s44 = s4;
+path.s45 = s5;
+path.s46 = s6;
+path.s47 = s7;
+path.s48 = s8;
+path.s49 = s9;
+
+path.s40 = s10;
+path.s41 = s1;
+path.s42 = s2;
+path.s43 = s3;
+path.s44 = s4;
+path.s45 = s5;
+path.s46 = s6;
+path.s47 = s7;
+path.s48 = s8;
+path.s49 = s9;
+/*
+path.s1 = s1;
+path.s2 = s2;
+path.s3 = s3;
+path.s4 = s4;
+path.s5 = s5;
+path.s6 = s6;
+path.s7 = s7;
+path.s8 = s8;
+path.s9 = s9;
+path.s0 = s10;
+*/
+
+
+
+
 // path.s15 = s15;
 
 
