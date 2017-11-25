@@ -10,8 +10,20 @@ var layerSymbol = new Konva.Layer({});
 var groupSymbols = new Konva.Group({ //группа символов
   x: 0,
   y: 0,
-  draggable: true
+  draggable: true,
+  dragBoundFunc: function (pos) {
+    return {
+      x: pos.x,
+      y: this.getAbsolutePosition().y
+    }
+  }
 });
+groupSymbols.x(120);
+// groupSymbols.x(20);
+
+
+
+
 
 
 var counter = 0;
@@ -39,13 +51,17 @@ for (var key in path) {
   });
   groupSymbol.on('click', function () {
     console.log(this.name());
+    symbolRollback();
+  });
+  groupSymbols.on('dragend', function () {
+    symbolRollback();
   });
   groupSymbol.add(symbolBox, symbolPath);
 
   counter++;
   // console.log(counter);
   // console.log(path[key]); 
-  groupSymbol.x(counter * 40-40);
+  groupSymbol.x(counter * 40 - 40);
   groupSymbols.add(groupSymbol);
 }
 
@@ -57,22 +73,40 @@ for (var key in path) {
 // layerSymbol.draw();
 
 
- 
+
 // set container
 var container = document.createElement('div');
 var rootTE = document.getElementById('TE');
-rootTE.appendChild(container); 
+rootTE.appendChild(container);
 var stageSymbol = new Konva.Stage({
-  container: container,  
+  container: container,
   width: holstW * boxSize,
   height: 40
-}); 
+});
 
 layerSymbol.add(groupSymbols);
 stageSymbol.add(layerSymbol);
 
 
 
-// get container
-// var container = stageSymbol.container();
-
+//возврат при перемещении обрацов далее положенного
+function symbolRollback() {
+  // console.log(groupSymbols.x(), "X");
+  // console.log(counter * 40, "ширина образцов");
+  // console.warn(groupSymbols.getStage().width(), "ширина сцены");
+  var x = groupSymbols.x();
+  //ширина сцены делйная на ширину образцов
+  var exceeded = groupSymbols.getStage().width() - (counter * 40);
+  if (x > 0) {
+    groupSymbols.to({
+      x: 0,
+      duration: 0.2
+    });
+  } else if (x < exceeded) {
+    groupSymbols.to({
+      x: exceeded,
+      duration: 0.2
+    });
+  }
+}
+// symbolRollback();
