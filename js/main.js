@@ -1,4 +1,3 @@
-
 var tool; //инструмент
 //защита цвета
 //стирание при повторном нажатии
@@ -93,7 +92,7 @@ for (var iy = 0; iy < holstH; iy++) { // noprotect
       y: iy * boxSize,
       width: boxSize,
       height: boxSize,
-      
+
       // x : ix * boxSize,
       // y : iy * boxSize,
       // width : boxSize - 1,
@@ -120,39 +119,7 @@ stageEditor.add(layerTiles);
 
 //наведение на боксы
 // layer.on('mouseover', function(evt) {
-  layerTiles.on('mousedown mouseover', function (evt) {
 
-  // layer.on('mousemove', function(evt) {
-
-  if (evt.type == "mousedown" || mouseL) { //если мышь нажата
-    var box = evt.target;
-    // console.log(box);
-    box.fill(sample);
-    // layer.draw();
-    // box.draw();
-
-    layerTiles.batchDraw();
-  }
-  // console.log(evt);
-  /*mouseDown = false;
-  // Зажата клавиша мыши
-  window.onmousedown = function(){
-        mouseDown = true;
-  };
-          
-  // Отпущена клавиша мыши
-  window.onmouseup = function(){
-        mouseDown = false;
-  };
-
-  if (mouseDown){
-    console.log("зажата");
-  }else{
-    console.log("Отпущна");    
-  }*/
-
-
-});
 // layer.on('mouseout', function(evt) {
 //     var box = evt.target;
 //     box.fill('darkgrey');
@@ -296,21 +263,3 @@ function draw2(x, y, value) {
 //   // alert( 'Ура!' );
 //   console.log("клик");
 // };
-var mouseL; //флаг о нажатии мыши
-$(document).mousedown(function (e) {
-  if (e.which == 1) {
-    mouseL = true;
-  }
-});
-$(document).mouseup(function (e) {
-  if (e.which == 1) {
-    console.log("отжал");
-    mouseL = false;
-  }
-});
-$(".samples").click(function () {
-  $(".act").removeClass("act");
-  $(this).addClass("act");
-  sample = $(this).css("background-color");
-});
-$('#sample15').trigger('click');

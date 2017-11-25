@@ -1,7 +1,6 @@
 console.clear();
 console.log("я родился");
 
-
 /**/
 var boxSize = 20; //размер клетки
 

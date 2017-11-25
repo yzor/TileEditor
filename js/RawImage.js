@@ -252,9 +252,9 @@ function addAnchor(group, x, y, name) {
 //вкл редактирование
 function resizeON() {
   // console.warn("ON"); 
-    groupResize.show();
-    ImageRawKonva.setStrokeWidth(6);   
-    stageEditor.draw();
+  groupResize.show();
+  ImageRawKonva.setStrokeWidth(6);
+  stageEditor.draw();
 }
 //выкл редактирование
 function resizeOFF() {
@@ -265,11 +265,12 @@ function resizeOFF() {
   stageEditor.draw();
 }
 //включаем трансформацию по чекбоксу
-$(function () { 
+$(function () {
   $("#resize").change(function () {
-    if ($("#resize").prop("checked")) { 
+    if ($("#resize").prop("checked")) {
       resizeON();
     } else {
-      resizeOFF(); }
+      resizeOFF();
+    }
   });
-}); 
+});
