@@ -140,6 +140,7 @@ function symbolRollback() {
 
 function animWheel(x, s, e) {
   var tween;
+  // tween.stop();
   tween = new Konva.Tween({
     node: groupSymbols,
     easing: Konva.Easings[e], //0.3 53 
@@ -147,55 +148,69 @@ function animWheel(x, s, e) {
     x: x,
   });
   tween.play();
-
-  // function func() {
-  //   count--;
-  //   if (count == 0) {
-
-  //     // count2++;
-  //     // console.log(count);
-  //     // tween.stop(); 
-  //     symbolRollback();
-  //   }
-  // }
+  /*
+    //     easing: Konva.Easings.ElasticEaseIn, //bad
+    //     easing: Konva.Easings.BounceEaseIn, //bad
+    //     easing: Konva.Easings.StrongEaseIn,//bad
+    //     easing: Konva.Easings.BackEaseIn,//bad
+    //     easing: Konva.Easings.BounceEaseInOut,//bad
+    //     easing: Konva.Easings.StrongEaseInOut,//bad
+    //     easing: Konva.Easings.BackEaseInOut,//bad
+    //     easing: Konva.Easings.EaseIn,//лучше чем EaseOut
+    //     easing: Konva.Easings.EaseInOut,//bad 
+    //     easing: Konva.Easings.ElasticEaseInOut, //good (нет)  
+    
+    
+    //     easing: Konva.Easings.BounceEaseOut, //
+    //   easing: Konva.Easings.ElasticEaseOut, // 0.5 53 неоч
+    //   easing: Konva.Easings.BackEaseOut, //
+    //   easing: Konva.Easings.EaseOut, //0.4→4
+    //   easing: Konva.Easings.StrongEaseOut, //0.3 53 
+    
+    //   // easing: Konva.Easings.Linear, //Linear 1  70
+  */
 }
 
 
 
 
 
-
-
-var count = 0;
-// var count2= 0;
+//скролл по панели образцов
+var countWheel = 0;
 window.addEventListener('wheel', (e) => {
-  count++;
-  e.preventDefault(); //отключаем действие по умаолчанию
+  e.preventDefault(); //отключаем действие по умолчанию
   var x = groupSymbols.x() + e.deltaY * -1 * 53;
-  if (x > 140) {
-    x = 40;
-  } else if (x > -40) {
-    x = 40;
-  } else {
-
-    console.log(x);
-    animWheel(x, 0.7, "StrongEaseOut");
+  var exceeded = groupSymbols.getStage().width() - (counter * 40);
+  if (x > -40) {
+    x = 26;
+    // animWheel(x, 0.22, "BackEaseOut"); 
+    animWheel(x, 0.22, "StrongEaseOut");
+    countWheel++;
 
     function func() {
-      count--;
-      // console.log(count);
-      if (count == 0) {
-        console.warn(count);
-        // 
-        // count2++;
-        // tween.stop(); 
+      countWheel--;
+      if (countWheel == 0) {
         symbolRollback();
       }
     }
-    setTimeout(func, 810);
-  }
-  //animWheel(0, 0.4, "BackEaseOut");
+    setTimeout(func, 210);
+  } else if (x < exceeded - 40) {
+    x = exceeded - 26;
+    // animWheel(x, 0.22, "BackEaseOut"); 
+    animWheel(x, 0.22, "StrongEaseOut");
+    countWheel++;
 
+    function func() {
+      countWheel--;
+      if (countWheel == 0) {
+        symbolRollback();
+      }
+    }
+    setTimeout(func, 210);
+
+  } else {
+    animWheel(x, 0.7, "StrongEaseOut");
+  }
 
 
 
