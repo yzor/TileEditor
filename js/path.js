@@ -21,9 +21,8 @@ var s12 = "M-0.000,16.000 L-0.000,-0.000 L16.000,-0.000 L16.000,16.000 L-0.000,1
 
 path.s1 = s1;
 path.s2 = s2;
-path.s2 = s3;
-path.s3 = s4;
-path.s4 = s5;
+path.s3 = s3;
+path.s4 = s4;
 path.s5 = s5;
 path.s6 = s6;
 path.s7 = s7;
@@ -37,5 +36,4 @@ path.s14 = s14;
 
 
 // console.warn(path);
-
 

@@ -35,7 +35,8 @@ function sandboxTools(color, id) {
   // console.log(color,num);
   TE.selected.color = color;
   TE.selected.sample = num;
-  console.log(TE.selected);
+  
+  // console.log(TE.selected);
 }
  
 

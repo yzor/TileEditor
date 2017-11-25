@@ -8,12 +8,15 @@ var tool; //инструмент
 var sample; //текущий образец
 
 var holstW = 15; //ширина в клетках
-var holstH = 15; //высота в клетках 
+var holstH = 9; //высота в клетках 
 var boxSize = 20; //размер клетки
 
 //TileEditor
+var container = document.createElement('div');
+var rootTE = document.getElementById('TE');
+rootTE.appendChild(container); 
 var stageEditor = new Konva.Stage({
-  container: 'container',
+  container: container,
   width: holstW * boxSize,
   height: holstH * boxSize
 });
