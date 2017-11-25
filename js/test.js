@@ -11,12 +11,12 @@ var groupSymbols = new Konva.Group({ //группа символов
   x: 0,
   y: 0,
   draggable: true,
-  // dragBoundFunc: function (pos) {
-  //   return {
-  //     x: pos.x,
-  //     y: this.getAbsolutePosition().y
-  //   }
-  // }
+  dragBoundFunc: function (pos) {
+    return {
+      x: pos.x,
+      y: this.getAbsolutePosition().y
+    }
+  }
 });
 // groupSymbols.x(120);
 // groupSymbols.x(20);
@@ -54,7 +54,7 @@ for (var key in path) {
   });
   //проверка после перетаскивания, не ушло ли за края
   groupSymbols.on('dragend', function () {
-    // symbolRollback();
+    symbolRollback();
   });
   groupSymbol.add(symbolBox, symbolPath);
 
@@ -140,13 +140,13 @@ function symbolRollback() {
 
 function animWheel(x, s, e) {
   var tween;
-  // tween = new Konva.Tween({
-  //   node: groupSymbols,
-  //   easing: Konva.Easings[e], //0.3 53 
-  //   duration: s,
-  //   x: x,
-  // });
-  // tween.play();
+  tween = new Konva.Tween({
+    node: groupSymbols,
+    easing: Konva.Easings[e], //0.3 53 
+    duration: s,
+    x: x,
+  });
+  tween.play();
 
   // function func() {
   //   count--;
