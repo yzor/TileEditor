@@ -1,3 +1,4 @@
+//var tilePath, tile, tileBg;
 var tool; //инструмент
 //защита цвета
 //стирание при повторном нажатии
@@ -9,12 +10,12 @@ var sample; //текущий образец
 
 var holstW = 15; //ширина в клетках
 var holstH = 9; //высота в клетках 
-var boxSize = 20; //размер клетки
+var boxSize = 30; //размер клетки
 
 //TileEditor
 var container = document.createElement('div');
 var rootTE = document.getElementById('TE');
-rootTE.appendChild(container); 
+rootTE.appendChild(container);
 var stageEditor = new Konva.Stage({
   container: container,
   width: holstW * boxSize,

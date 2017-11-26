@@ -1,26 +1,26 @@
-var TE={
-  selected:{
-    color:"gold",
-    sample:1,
-    tools:"pen"
+var TE = {
+  selected: {
+    color: "gold",
+    sample: "s2",
+    tools: "pen"
   },
-  tools:{
+  tools: {
     pen: "",
     loupe: "",
     resize: "",
     pipette: "",
-    rectangle: ""//прямоугольник
+    rectangle: "" //прямоугольник
   },
-  options:{//options
-    help:true,
-    colorProtect:true,//защита цвета
-    autoClear:true,//стирание при повторном нажатии
-    markLastDraw:true,//выделять последние нарисованые
-    relatedTiles:true//cмежные пикселпи
+  options: { //options
+    help: true,
+    colorProtect: true, //защита цвета
+    autoClear: true, //стирание при повторном нажатии
+    markLastDraw: true, //выделять последние нарисованые
+    relatedTiles: true //cмежные пикселпи
   }
 };
 // var sample={}
-var set={ }
+var set = {}
 
 
 
@@ -30,18 +30,12 @@ var set={ }
 
 // console.warn(sample); 
 
-function sandboxTools(color, id) {
-  var num = parseInt(id.replace(/\D+/g, ""));
-  // console.log(color,num);
-  TE.selected.color = color;
-  TE.selected.sample = num;
-  
-  // console.log(TE.selected);
-}
- 
+
+// var www ;
+//  console.log(www);  
 
 // console.log(TE);
- 
+
 
 
 

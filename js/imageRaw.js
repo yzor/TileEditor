@@ -2,7 +2,7 @@ var layerRawImg = new Konva.Layer(); //слой для изображения
 var layerRawResize = new Konva.Layer(); //слой для изменения размера
 var groupResize, ImageRawKonva;
 var ImageRaw = new Image(); //создаём изображение
-ImageRaw.src = 'http://yzorrykodelie.ru/wp-content/uploads/2016/03/2.png';
+ImageRaw.src = 'https://yzorrykodelie.ru/wp-content/uploads/2016/03/2.png';
 ImageRaw.onload = function () { //дейтвие при загрузке изображения
   console.log(ImageRaw.height, ImageRaw.width);
   ImageRawKonva = new Konva.Image({ //изображение

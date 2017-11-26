@@ -5,7 +5,8 @@ layerTiles.on('mousedown mouseover', function (evt) {
   if (evt.type == "mousedown" || mouseL) { //если мышь нажата
     var box = evt.target;
     // console.log(box);
-    box.fill(sample);
+    // box.fill(sample);
+    box.fillPatternImage(testIMG);
     // layer.draw();
     // box.draw();
 
@@ -46,10 +47,4 @@ $(document).mouseup(function (e) {
     mouseL = false;//отжал мышь
   }
 });
-$(".samples").click(function () {
-  $(".act").removeClass("act");
-  $(this).addClass("act");
-  sample = $(this).css("background-color");
-  sandboxTools(sample, $(this).attr('id'));
-});
-$('#sample15').trigger('click'); 
+ 
