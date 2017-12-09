@@ -23,39 +23,34 @@ function removeLayer(param) {
     TElayers.removeChild(element);
   }
 }
-addLayer("Лицевая");
-addLayer("Прогиб");
+// addLayer("Лицевая");
+// addLayer("Прогиб");
 
-function addLayer(param, layerIcon4) {
+function addLayer(param, img) {
   var element = document.getElementById(param);
   if (!element) {
     // console.log(param);
-    var layerName = document.createElement('span');
-    layerName.className = "TElayerName";
-    layerName.innerHTML = param;
-
-    // var layerIcon = img;
-    layerIcon4.className = "TElayerIcon";
-    // var layerIcon2 = document.createElement('img');
-    // console.log(layerIcon);
-    // console.log(layerIcon2);
-    // var layerIcon = document.createElement('img');
-    // img.className = "TElayerIcon"; 
-    // layerIcon.className = "TElayerIcon";
-
-    var layerDiv = document.createElement('div');
+    var layerDiv = document.createElement('div');//слой
     layerDiv.id = param;
     layerDiv.className = "TElayer";
 
-    layerDiv.appendChild(layerIcon4);
-    // layerDiv.appendChild(img);
+    var layerName = document.createElement('span');//имя слоя
+    layerName.className = "TElayerName";
+    layerName.innerHTML = param;
     layerDiv.appendChild(layerName);
+    
+    if(img){
+      img.className = "TElayerIcon";
+      layerDiv.appendChild(img);
+    }else{
+      console.log("нет изображения");
+    };
     TElayers.appendChild(layerDiv);
     setTimeout(function () {
       /*анимация появления*/
     }, 1000);
   } else {
-    console.log("Элемент уже есть");
+    // console.log("Элемент уже есть");
   }
 }
 
@@ -63,4 +58,18 @@ function addLayer(param, layerIcon4) {
 /*Клик по элементу в списке слоёв*/
 $(document).on("click", '.TElayer', function () {
   console.error(this.id);
+  TE.selected.sample = this.id; //сохраняем цвет
+  selectSample();
+  // console.log(TE.selected);
+});
+ 
+
+//выбор цвета с палитры
+$(".samples").click(function () {
+  $(".act").removeClass("act");
+  $(this).addClass("act");
+  sample = $(this).css("background-color");
+  TE.selected.color = sample; //сохраняем цвет
+  // sandboxTools(sample, $(this).attr('id'));
+  selectSample(); //перерисовка символа
 });

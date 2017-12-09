@@ -117,6 +117,7 @@ function selectSample() {
   tileBg.fill(TE.selected.color);
   remakeSample();
   layerSample.draw();
+  // addLayer(TE.selected.sample, testIMG); 
   // addLayer(TE.selected.sample); 
 }
 
@@ -145,7 +146,7 @@ function remakeSample() {
       // console.log(img);
       testIMG = img;
       // addLayer(TE.selected.sample,"https://makeagif.com/images/logo.svg"); 
-      addLayer(TE.selected.sample,img); 
+      // addLayer(TE.selected.sample,img); 
       // console.error(img);
       
       // addLayer(TE.selected.sample,img); 
@@ -184,15 +185,6 @@ function remakeSample() {
 
 
 
-//выбор цвета с палитры
-$(".samples").click(function () {
-  $(".act").removeClass("act");
-  $(this).addClass("act");
-  sample = $(this).css("background-color");
-  TE.selected.color = sample; //сохраняем цвет
-  // sandboxTools(sample, $(this).attr('id'));
-  selectSample(); //перерисовка символа
-});
 $('#sample15').trigger('click'); //шликаем програмно
 layerSample.add(tile);
 stageEditor.add(layerSample);

@@ -49,8 +49,8 @@ ImageRaw.onload = function () { //дейтвие при загрузке изо�
   addAnchor(groupResize, 190, 150, 'bottomRight');
   addAnchor(groupResize, 0, 150, 'bottomLeft');
   resizeOFF();
-  stageEditor.add(layerRawResize, layerRawImg);
-  layerRawImg.moveToBottom();
+  // stageEditor.add(layerRawResize, layerRawImg);
+  // layerRawImg.moveToBottom();
 
 };
 

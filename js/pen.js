@@ -6,11 +6,13 @@ layerTiles.on('mousedown mouseover', function (evt) {
     var box = evt.target;
     // console.log(box);
     // box.fill(sample);
-    box.fillPatternImage(testIMG);
+    box.fillPatternImage(testIMG);//заливаем клетку изображением
     // layer.draw();
     // box.draw();
 
     layerTiles.batchDraw();
+    addLayer(TE.selected.sample, testIMG);
+    // console.log(box.x());
   }
   // console.log(evt);
   /*mouseDown = false;
