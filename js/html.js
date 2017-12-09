@@ -32,7 +32,7 @@ function addLayer(param, img) {
     // console.log(param);
     var layerDiv = document.createElement('div');//слой
     layerDiv.id = param;
-    layerDiv.className = "TElayer";
+    layerDiv.className = "TElayer act";
 
     var layerName = document.createElement('span');//имя слоя
     layerName.className = "TElayerName";
@@ -45,6 +45,7 @@ function addLayer(param, img) {
     }else{
       console.log("нет изображения");
     };
+    $(".act").removeClass("act");
     TElayers.appendChild(layerDiv);
     setTimeout(function () {
       /*анимация появления*/
@@ -59,9 +60,12 @@ function addLayer(param, img) {
 $(document).on("click", '.TElayer', function () {
   console.error(this.id);
   TE.selected.sample = this.id; //сохраняем цвет
+  $(".act").removeClass("act");
+  $(this).addClass("act");
   selectSample();
   // console.log(TE.selected);
 });
+
  
 
 //выбор цвета с палитры

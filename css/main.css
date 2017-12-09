@@ -96,7 +96,6 @@ canvas{
   /*правая панель*/
 
   #TEpanelR {
-    z-index: 1;
     /* width: 162px; */
     overflow: auto;
     height: 100vh;
@@ -105,7 +104,6 @@ canvas{
     top: 0;
     right: 0px;
     background: #282828;
-    /* background: #282828f6; */
   }
   /*слой*/
 
@@ -116,8 +114,8 @@ canvas{
     overflow: hidden;
     outline: none;
     color: rgba(255, 255, 255, 0.7);
-    /* padding: 0 12px; */
-    background: #282818;
+    padding: 0 12px;
+    /* background: #282828; */
     background: transparent;
     /* background: #222; */
     height: 36px;
@@ -134,8 +132,10 @@ canvas{
   .TElayer:hover {
     color: white;
     background: #2f2f2f;
+    background: #242424;
   }
 
+  .act::after,
   .TElayer:hover::after {
     display: none;
   }
@@ -150,7 +150,6 @@ canvas{
   }
 
   .TElayerName {
-    cursor: default;
     position: relative;
     position: absolute;
     margin: 10px 0px 0 37px;
@@ -160,6 +159,16 @@ canvas{
     /*обрезание*/
     /* text-overflow: ellipsis; */
     /*точки*/
+  }
+
+  .act:hover {
+    color: #ffc61e;
+  }
+
+  .act {
+    color: #ffc61e;
+    /* background: t; */
+    background: #1f1f1f;
   }
 
   .TElayer::after {
