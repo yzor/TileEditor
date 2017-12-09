@@ -36,6 +36,7 @@ for (var key in path) {
   groupSymbol.on('click', function () {
     TE.selected.sample = this.name();
     console.log(TE.selected.sample);
+    
     selectSample();
   });
 

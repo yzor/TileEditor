@@ -8,6 +8,7 @@ canvas{
   }
   
   #palette{
+    z-index: 2;
     position: fixed;
     top: 0;
     right: 0;
@@ -65,3 +66,114 @@ canvas{
   }
   
   
+
+
+
+  /*layerts*/
+
+
+
+  body {
+    margin: 0;
+    padding: 0;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: #141414;
+    background: #1F1F1F;
+    color: white;
+    font-style: normal;
+    font-variant-ligatures: normal;
+    font-variant-caps: normal;
+    font-variant-numeric: normal;
+    font-weight: normal;
+    font-stretch: normal;
+    font-size: 14px;
+    line-height: 16px;
+    font-family: "Open Sans", sans-serif;
+  }
+  /*правая панель*/
+
+  #TEpanelR {
+    z-index: 1;
+    /* width: 162px; */
+    overflow: auto;
+    height: 100vh;
+    /* background: gold; */
+    position: fixed;
+    top: 0;
+    right: 0px;
+    background: #282828;
+    /* background: #282828f6; */
+  }
+  /*слой*/
+
+  .TElayer {
+    position: relative;
+    /* position: absolute; */
+    user-select: none;
+    overflow: hidden;
+    outline: none;
+    color: rgba(255, 255, 255, 0.7);
+    /* padding: 0 12px; */
+    background: #282818;
+    background: transparent;
+    /* background: #222; */
+    height: 36px;
+    width: 100%;
+    width: 170px;
+    border: none;
+    /* background: white; */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    /* border-bottom: 1px solid tomato; */
+    /* flex: 0 0 auto; */
+    /* display: flex; */
+  }
+
+  .TElayer:hover {
+    color: white;
+    background: #2f2f2f;
+  }
+
+  .TElayer:hover::after {
+    display: none;
+  }
+  /*иконка*/
+
+  .TElayerIcon {
+    position: absolute;
+    margin: 7px 0 0 6px;
+    border: rgba(225, 225, 225, 0.09) 1px dashed;
+    width: 20px;
+    height: 20px;
+  }
+
+  .TElayerName {
+    cursor: default;
+    position: relative;
+    position: absolute;
+    margin: 10px 0px 0 37px;
+    white-space: nowrap;
+    /* откл перенос строк */
+    /* overflow: hidden; */
+    /*обрезание*/
+    /* text-overflow: ellipsis; */
+    /*точки*/
+  }
+
+  .TElayer::after {
+    top: 0;
+    right: 0;
+    position: absolute;
+    content: '';
+    /* Выводим элемент */
+    width: 21px;
+    /* Ширина градиента*/
+    height: 100%;
+    /* Высота родителя */
+    /* Градиент */
+    background: linear-gradient(to right, rgba(255, 204, 0, 0.1), #fc0 100%);
+    background: linear-gradient(to right, rgba(40, 40, 40, 0.3), rgba(40, 40, 40, 0.90) 50%, #282828 70%);
+    background: linear-gradient(to right, rgba(40, 40, 40, 0.4), #282828 93%);
+  }
