@@ -71,8 +71,8 @@ function removeAssets() {}
 var tile = new Konva.Group({
   x: 5,
   y: 5,
-  width: boxSize,
-  height: boxSize,
+  width: 20,//boxSize,
+  height: 20,//boxSize,
 });
 
 
@@ -106,82 +106,6 @@ var tile = new Konva.Group({
   height: boxSize,
 });
 tile.add(tileBg, tilePath);
-
-
-/**
- * выбор элемента из списка всех узоров
- */
-function selectSample() {
-  // console.warn(TE.selected.sample); 
-  tilePath.data(path[TE.selected.sample]);
-  tileBg.fill(TE.selected.color);
-  remakeSample();
-  layerSample.draw();
-  // addLayer(TE.selected.sample, testIMG); 
-  // addLayer(TE.selected.sample); 
-}
-
-
-// var test = new Konva.Rect({
-//   stroke: 'black',
-//   strokeWidth: 2,
-//   x: 44,
-//   y: 44,
-//   width: 2*boxSize + 2,
-//   height: 2*boxSize + 2,
-//   // fill: "gold",
-//   // fillPatternImage: img,
-//   // opacity:0.8,
-// });
-// layerSample.add(test);
-var testIMG;
-//отрисовываем образец заново
-function remakeSample() {
-  var image = tile.toImage({
-    x: tile.x(),
-    y: tile.y(),
-    width: boxSize,
-    height: boxSize,
-    callback: function (img) {
-      // console.log(img);
-      testIMG = img;
-      // addLayer(TE.selected.sample,"https://makeagif.com/images/logo.svg"); 
-      // addLayer(TE.selected.sample,img); 
-      // console.error(img);
-      
-      // addLayer(TE.selected.sample,img); 
-      // var element = document.getElementById("panelR");
-      // var qweImg = document.createElement('img');
-      
-
-
-
-
-      // console.log(qweImg);
-      // element.appendChild(img);
-
-
-
-      // var IM = document.createElement('img');
-      // IM.src = 'https://makeagif.com/images/logo.svg';
-      // // element.appendChild(image);
-      // console.log(IM);
-
-      //https://makeagif.com/images/logo.svg
-
-
-      // console.log(testIMG);
-      // test.fillPatternImage(testIMG);
-      // test.draw();
-      // return img;
-    }
-  });
-
-}
-
-
-
-
 
 
 

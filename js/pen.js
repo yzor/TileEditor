@@ -1,3 +1,6 @@
+var layerAsset={
+  
+};
 layerTiles.on('mousedown mouseover', function (evt) {
 
   // layer.on('mousemove', function(evt) {
@@ -10,9 +13,11 @@ layerTiles.on('mousedown mouseover', function (evt) {
     // layer.draw();
     // box.draw();
 
+    // box.batchDraw();
+
     layerTiles.batchDraw();
-    addLayer(TE.selected.sample, testIMG);
-    // console.log(box.x());
+    // addLayer(TE.selected.sample, testIMG);
+    console.log(box.x(), box.y());
   }
   // console.log(evt);
   /*mouseDown = false;
