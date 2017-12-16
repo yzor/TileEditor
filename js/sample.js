@@ -33,10 +33,11 @@ for (var key in path) {
     x: 0,
     y: 0,
   });
+
+//Клик по элементу в панели символов
   groupSymbol.on('click', function () {
     TE.selected.sample = this.name();
-    console.log(TE.selected.sample);
-    
+    console.log("Клик panel symbol (" + TE.selected.sample+")"); 
     selectSample();
   });
 

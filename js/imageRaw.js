@@ -32,10 +32,10 @@ ImageRaw.onload = function () { //дейтвие при загрузке изо�
 
     // stageEditor.draw();//#TODO поправить
 
-    // layerRawImg.draw();
+    layerRawImg.draw();
     // layerRawResize.draw();
 
-    layerRawImg.batchDraw();
+    // layerRawImg.batchDraw();
     layerRawResize.batchDraw();
   });
 

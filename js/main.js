@@ -8,9 +8,9 @@ var tool; //инструмент
 //рисование заметок
 var sample; //текущий образец
 
-var holstW = 140; //ширина в клетках
-var holstH = 140; //высота в клетках 
-var boxSize =  15; //размер клетки
+var holstW = 5; //ширина в клетках 
+var holstH = 2; //высота в клетках 
+var boxSize =  60; //размер клетки
 
 //TileEditor
 var container = document.createElement('div');

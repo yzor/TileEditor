@@ -109,6 +109,6 @@ tile.add(tileBg, tilePath);
 
 
 
-$('#sample15').trigger('click'); //шликаем програмно
+// $('#sample15').trigger('click'); //шликаем програмно
 layerSample.add(tile);
 stageEditor.add(layerSample);
