@@ -114,6 +114,17 @@ function checkFake(params) {
 
 
 
+//изменение размера сцены при изменении окна
+function responsiveStage(params) {
+  // console.log("responsiveStage");
+  widthScreen = window.innerWidth - 190;
+  heightScreen = window.innerHeight;
+  stageEditor.width(widthScreen);
+  stageEditor.height(heightScreen);
+  stageSymbol.width(widthScreen);
+}
+window.addEventListener('resize', responsiveStage);
+
 
 
 
@@ -264,14 +275,14 @@ function selectSampleOLD() { //#TODO createSample
 }
 //выбор элемента из списка всех узоров
 function selectSample() { //#TODO createSample
-  var layer1 = TE.selected.sample;// выбираем текущий символ
-  console.log('%c%s', 'color: green;', "selectSample(" + layer1 + ")");//test
+  var layer1 = TE.selected.sample; // выбираем текущий символ
+  console.log('%c%s', 'color: green;', "selectSample(" + layer1 + ")"); //test
 
-  var element = document.getElementById(layer1);//Получаем элемент со страницы с выбраным айди
+  var element = document.getElementById(layer1); //Получаем элемент со страницы с выбраным айди
   if (element) { //если такой слой есть
     console.log('%c%s', 'color: green;', "Есть элемент", element);
-    var qwe = "red"; 
-    console.log('%c%s', 'background: ' + element.getAttribute("data-color")+';', element.getAttribute("data-color"));
+    var qwe = "red";
+    console.log('%c%s', 'background: ' + element.getAttribute("data-color") + ';', element.getAttribute("data-color"));
     TE.selected.color = element.getAttribute("data-color");
 
 
@@ -284,7 +295,7 @@ function selectSample() { //#TODO createSample
       console.log('%c%s', 'color: green;', "есть фэйк");
     } else { //Если нет фэйка
       console.log('%c%s', 'color: green;', "нет фэйка");
-      nextColor();//меняем цвет если нет фэйка и слоя
+      nextColor(); //меняем цвет если нет фэйка и слоя
     }
   }
 
@@ -361,6 +372,24 @@ $(".samples").click(function () {
   var color = $(this).css("background-color"); //выбираем цвет с палитры
   TE.selected.color = color; //сохраняем цвет
   selectSample(); //перерисовка символа
+});
+
+//Кнопка защиты
+$("#TEprotect").click(function () {
+  console.warn(TE.options.protect);
+  if (TE.options.protect){
+    TE.options.protect =false;
+    $("#TEprotect").removeClass("on detect");
+  }else{
+    TE.options.protect = true;
+    $("#TEprotect").addClass("on");
+  }
+  // console.log("Клик палитра (" + color + ")");
+  // $(".actColor").removeClass("actColor");
+  // $(this).addClass("actColor");
+  // var color = $(this).css("background-color"); //выбираем цвет с палитры
+  // TE.selected.color = color; //сохраняем цвет
+  // selectSample(); //перерисовка символа
 });
 
 

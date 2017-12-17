@@ -19,7 +19,7 @@ for (var i = 0, l = holstH; i < l; i++) {
 // layer.on('mousemove', function(evt) {
 //КликКлак
 layerTiles.on('mousedown mouseover', function (evt) {
-  var box = evt.target; 
+  var box = evt.target;
   var X = box.x() / boxSize;
   var Y = box.y() / boxSize;
   if (evt.type == "mousedown" || mouseL) { //если мышь нажата
@@ -30,17 +30,52 @@ layerTiles.on('mousedown mouseover', function (evt) {
       sample = BD1[Y][X][0];
       color = BD1[Y][X][1];
       console.log('%c%s', 'color: gold;', evt.evt.ctrlKey);
-      if (sample) { TE.selected.sample = sample}
-      if (color) { TE.selected.color = color }
+      if (sample) {
+        TE.selected.sample = sample
+      }
+      if (color) {
+        TE.selected.color = color
+      }
       selectSample();
-      console.log('%c%s', 'color: red;', BD1[Y][X][0]);
-      console.log('%c%s', 'color: red;', BD1[Y][X][1]);
-      
-
+      // console.log('%c%s', 'color: red;', BD1[Y][X][0]);
+      // console.log('%c%s', 'color: red;', BD1[Y][X][1]);
       return false; //не продолжать
     }
     // console.log(evt);
+    var sample = BD1[Y][X][0];
+    var color = BD1[Y][X][1];
+    if (color || sample) { //(protect) если клетка уже закрашена
+      if (sample == TE.selected.sample && color == TE.selected.color) { //клетка==выбраный образец
+        //#TODO сдeлать чтобы при нажатии запоминался инструмент(карандаш/стёрка) 
+        //и сохранялся до отпускания мыши
 
+
+
+        // BD1[Y][X][0]=false;
+        // BD1[Y][X][1]=false;
+        // box.fill("red");
+        // box.draw();
+      } else if(TE.options.protect){ //клетка отличается от выбранного образца
+        console.log('%c%s', 'background: red;', "detect");
+        // if (TE.options.protect) { //Если защита включена, то закругляемся
+        var $elm = $("#TEprotect")
+        $elm.removeClass("detect");
+        setTimeout(function () {
+          $elm.addClass("detect");
+        }, 0);
+          // console.log(TE.options.protect);
+          return false;
+        // }
+      }
+
+
+      // console.log("клетка  уже закрашена");
+
+
+
+
+
+    }
 
 
     box.name(TE.selected.sample);
@@ -56,8 +91,8 @@ layerTiles.on('mousedown mouseover', function (evt) {
     // addLayer(TE.selected.sample, testIMG);
 
 
-  // var X = box.x() / boxSize;    
-  // var Y = box.y() / boxSize;
+    // var X = box.x() / boxSize;    
+    // var Y = box.y() / boxSize;
     BD1[Y][X][0] = TE.selected.sample;
     BD1[Y][X][1] = TE.selected.color;
     // console.log(X, Y, BD1[Y][X]);

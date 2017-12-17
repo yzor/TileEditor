@@ -1,7 +1,7 @@
 var TE = {
   selected: {
     color: "gold",
-    sample: "s23",
+    sample: "s3",
     tools: "pen"
   },
   tools: {
@@ -13,7 +13,9 @@ var TE = {
   },
   options: { //options
     help: true,
-    colorProtect: true, //защита цвета
+    protect: true, //защита клетки
+    // colorProtect: true, //защита цвета
+    // sampleProtect: true, //защита символа
     autoClear: true, //стирание при повторном нажатии
     markLastDraw: true, //выделять последние нарисованые
     relatedTiles: true //cмежные пикселпи
