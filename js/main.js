@@ -8,8 +8,8 @@ var tool; //инструмент
 //рисование заметок
 var sample; //текущий образец
 
-var holstW = 5; //ширина в клетках 
-var holstH = 2; //высота в клетках 
+var holstW = 10; //ширина в клетках 
+var holstH = 10; //высота в клетках 
 var boxSize =  60; //размер клетки
 
 //TileEditor

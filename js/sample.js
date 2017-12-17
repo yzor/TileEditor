@@ -3,6 +3,10 @@ var groupSymbols = new Konva.Group({ //группа символов
   x: 0,
   y: 0,
   draggable: true,
+  dragDistance: 6,
+    // node.dragDistance(3);
+  // or set globally
+  // Konva.dragDistance = 3;
   dragBoundFunc: function (pos) {
     return {
       x: pos.x,

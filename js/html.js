@@ -1,7 +1,12 @@
+"use strict";
+//#TODO крестики нолики при выборе нумерации
+
+
+
 //следующий цвет из списка
 var listColors = ["#ffc107", "#2196f3", "#ff5722", "#cddc39", "#e91e63", "#4caf50", "#ffeb3b", "#9c27b0", "#009688", "#3f51b5", "#f44336", "#8bc34a", "#673ab7", "#ff9800", "#00bcd4", "#795548", "#9e9e9e", "#607d8b", "#03a9f4"]
 // listColors = ["red", "green", "blue"]
-listColors = ["red", "orange", "gold", "green", "cyan", "blue", "indigo"]
+// listColors = ["red", "orange", "gold", "green", "cyan", "blue", "indigo"]
 
 function nextColor() {
   //#TODO пройтись по списку всех слоёв и удалить цвета которые используются,
@@ -14,13 +19,14 @@ function nextColor() {
   console.log("nextColors('" + color + "')");
 } //nextColor();
 
+//Перекрашивание всех элкментов выбранного типа
 function repainted(layer) {
-  console.log("repainted → " + layer);
+  // console.log("repainted → " + layer);
 
   var NAME;
   NAME = layerTiles.get('.' + layer); //однохуйственно?
   // NAME = layerTiles.find('.'+layer);//однохуйственно?
-  console.log(NAME.length + " → найдено (" + layer + ")");
+  // console.log(NAME.length + " → найдено (" + layer + ")");
   // console.log(NAME);
   for (var i = 0, l = NAME.length; i < l; i++) {
     // console.log(NAME[i]);
@@ -89,21 +95,70 @@ function checkSample(layer) {
   }
   return false;
 }
-// console.log(checkSample("gold"));
 
-//дабы убрать лишние запросы во время рисования - проверку фэйков проводить по запросу
+//Провека фэйков (дабы убрать лишние запросы во время рисования - проводить по запросу)
 function checkFake(params) {
   // console.log("checkFake → ("+params+")");
   var $fakeList = $(".fake"); //получаем список фэйков
   //#TODO м.б. проверять все слои?
   for (var i = 0, len = $fakeList.length; i < len; i++) { //перебираем фэйки
     var $fake = $fakeList.eq(i); //текущий фэйк
-    console.error($fake.attr("id"));
+    console.error("checkFake → (" + $fake.attr("id") + ")");
     if (checkSample($fake.attr("id"))) { //если уже не фэйк, то удаляем отметку
       $fake.removeClass("fake");
     }
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//#TODO selectSample надо вызывать из updateLayer или addLayer
+//соответствено их переиминовать
+//вызывать updateLayer вместо selectSample
+//и когда готово будет изображение перерисовывать вставлять в html 
+
+
+
+
+
 //обновление слоя
 function updateLayer(layer) {
   console.warn("updateLayer");
@@ -136,18 +191,13 @@ function updateLayer(layer) {
     addLayer(layer, testIMG);
   }
 }
-// addLayer(":0)1");
-// addLayer(":0)2");
-// addLayer(":0)3"); 
-
-checkFake();
 
 //добавление слоя аля PS
 function addLayer(layer, img) {
   console.log("addLayer → " + layer);
   var element = document.getElementById(layer);
   if (!element) { //если элемента нет
-    nextColor();
+    // nextColor();
     $(".fake").remove(); //удаляем фэйки
 
 
@@ -204,22 +254,52 @@ function addLayer(layer, img) {
 }
 
 //выбор элемента из списка всех узоров
-//#TODO selectSample надо вызывать из updateLayer или addLayer
-//соответствено их переиминовать
-//вызывать updateLayer вместо selectSample
-//и когда готово будет изображение перерисовывать вставлять в html 
-function selectSample() { //#TODO createSample
+function selectSampleOLD() { //#TODO createSample
   console.log("selectSample(" + TE.selected.sample + ")");
   tilePath.data(path[TE.selected.sample]); //отрисовываем выбраную фигуру
   tileBg.fill(TE.selected.color); //отрисовываем выбраный цвет
   remakeSample(); //перерисовать символ
   layerSample.draw(); //отрисовать слой образца (для тестов)
-
   // addLayer(TE.selected.sample); 
+}
+//выбор элемента из списка всех узоров
+function selectSample() { //#TODO createSample
+  var layer1 = TE.selected.sample;// выбираем текущий символ
+  console.log('%c%s', 'color: green;', "selectSample(" + layer1 + ")");//test
+
+  var element = document.getElementById(layer1);//Получаем элемент со страницы с выбраным айди
+  if (element) { //если такой слой есть
+    console.log('%c%s', 'color: green;', "Есть элемент", element);
+    var qwe = "red"; 
+    console.log('%c%s', 'background: ' + element.getAttribute("data-color")+';', element.getAttribute("data-color"));
+    TE.selected.color = element.getAttribute("data-color");
+
+
+  } else { //Если слоя нет 
+    console.log('%c%s', 'color: green;', "Элемента нет", element);
+    //если слоя нет и нет фэйка, то обновляем цвет
+    checkFake(layer1);
+
+    if ($("div").is(".fake")) { //если есть фэйк
+      console.log('%c%s', 'color: green;', "есть фэйк");
+    } else { //Если нет фэйка
+      console.log('%c%s', 'color: green;', "нет фэйка");
+      nextColor();//меняем цвет если нет фэйка и слоя
+    }
+  }
+
+
+
+  tilePath.data(path[layer1]); //отрисовываем выбраную фигуру
+  tileBg.fill(TE.selected.color); //отрисовываем выбраный цвет
+  remakeSample(); //перерисовать символ
+  layerSample.draw(); //отрисовать слой образца (для тестов)
+  // addLayer(layer1); 
 }
 
 //отрисовываем образец заново
 var testIMG;
+
 function remakeSample() {
   console.log("remakeSample");
   var image = tile.toImage({
@@ -227,8 +307,8 @@ function remakeSample() {
     y: tile.y(),
     width: boxSize,
     height: boxSize,
-    callback: function (img) {
-      testIMG = img;//получили картинку символа
+    callback: function (img) { //действие при получении изображения элемента
+      testIMG = img; //закидываем картинку в переменную, дабы расширить область видимости
       updateLayer(TE.selected.sample, testIMG); //#TODO  не нужен второй параметр?
       repainted(TE.selected.sample); //обновить все такие-же
       /*
@@ -279,9 +359,12 @@ $(".samples").click(function () {
   console.log("Клик палитра (" + color + ")");
   $(".actColor").removeClass("actColor");
   $(this).addClass("actColor");
-  var color = $(this).css("background-color");
+  var color = $(this).css("background-color"); //выбираем цвет с палитры
   TE.selected.color = color; //сохраняем цвет
-  // sandboxTools(sample, $(this).attr('id'));
   selectSample(); //перерисовка символа
-  // repainted(TE.selected.sample);//обновить все такие-же
 });
+
+
+
+
+function select(params) {}

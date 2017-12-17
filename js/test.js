@@ -69,10 +69,10 @@ function removeAssets() {}
 
 //////////////////////////////////////***********
 var tile = new Konva.Group({
-  x: 5,
-  y: 5,
-  width: 20,//boxSize,
-  height: 20,//boxSize,
+  // x: 15,
+  // y: 15,
+  // width: 20,//boxSize,
+  // height: 20,//boxSize,
 });
 
 
@@ -90,8 +90,8 @@ var tilePath = new Konva.Path({ //фигура
 });
 //цвет выбранного узора
 var tileBg = new Konva.Rect({
-  stroke: 'black',
-  strokeWidth: 2,
+  stroke: 'gold',
+  strokeWidth: 4,
   x: -1,
   y: -1,
   width: boxSize + 2,
@@ -100,8 +100,8 @@ var tileBg = new Konva.Rect({
   // opacity:0.8,
 });
 var tile = new Konva.Group({
-  x: 5,
-  y: 5,
+  x: 25,
+  y: 25,
   width: boxSize,
   height: boxSize,
 });
