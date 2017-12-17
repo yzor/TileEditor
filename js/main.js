@@ -10,7 +10,9 @@ var sample; //текущий образец
 
 var holstW = 10; //ширина в клетках 
 var holstH = 10; //высота в клетках 
-var boxSize =  60; //размер клетки
+var boxSize =50; //размер клетки
+var widthScreen = window.innerWidth-190;
+var heightScreen = window.innerHeight;
 
 //TileEditor
 var container = document.createElement('div');
@@ -18,13 +20,25 @@ var rootTE = document.getElementById('TE');
 rootTE.appendChild(container);
 var stageEditor = new Konva.Stage({
   container: container,
-  width: holstW * boxSize,
-  height: holstH * boxSize
+  // width: holstW * boxSize,//ширина из рассчёта размера и кол-ва клеток
+  // height: holstH * boxSize//высота из рассчёта размера и кол-ва клеток
+  // width: 615,//фиксированная ширина
+  // height: 315//фиксированная высота
+  width: widthScreen, //высота экрана
+  height: heightScreen //ширина экрана
+
 });
 
 var layerTiles = new Konva.Layer({
-  // x: 20,
-  // y: 20,
+
+
+
+
+  // var holstW = 10; //ширина в клетках 
+  //var holstH = 30; //высота в клетках 
+  //var boxSize = 10; //размер клетки
+  x: widthScreen / 2 - (holstW * boxSize) / 2,
+  y: heightScreen / 2 - (holstH * boxSize) / 2,
   // draggable: true,
   // opacity: 0.1
 });

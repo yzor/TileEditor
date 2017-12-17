@@ -112,3 +112,7 @@ tile.add(tileBg, tilePath);
 // $('#sample15').trigger('click'); //шликаем програмно
 layerSample.add(tile);
 stageEditor.add(layerSample);
+
+
+
+selectSample();//активация символа на старте

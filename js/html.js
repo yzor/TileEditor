@@ -343,7 +343,6 @@ function remakeSample() {
 
 
 
-
 //Выбор элемента в списке слоёв
 $(document).on("click", '.TElayer', function () {
   console.log("Клик panel layer", this);

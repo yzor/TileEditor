@@ -2,11 +2,8 @@ var layerSymbol = new Konva.Layer({});
 var groupSymbols = new Konva.Group({ //группа символов
   x: 0,
   y: 0,
-  draggable: true,
-  dragDistance: 6,
-    // node.dragDistance(3);
-  // or set globally
-  // Konva.dragDistance = 3;
+  draggable: true, //перетаскивание
+  dragDistance: 10, //смещение после которого включать перетаскивание
   dragBoundFunc: function (pos) {
     return {
       x: pos.x,
@@ -19,29 +16,55 @@ for (var key in path) {
   var groupSymbol = new Konva.Group({
     name: key,
     scale: {
-      x: 2,
-      y: 2
+      // x: 2,
+      // y: 2
     }
   });
   var symbolBox = new Konva.Rect({
-    width: 20,
-    height: 20,
-    fill: 'white',
-    stroke: 'black',
+    x:-0.5,
+    y:0.5,
+    width: 60,    
+    height: 50,
+    // fill: 'rgba(15, 15, 15, 0.3)',
+    fill: 'rgba(31, 31, 31, 0.94)',   
+    stroke: 'rgba(26, 25, 25, 1)',       
+    // stroke: 'rgba(15, 15, 15, 0.3)',
     strokeWidth: 1
   });
   var symbolPath = new Konva.Path({
     //8 9 10 12 bad 
     data: path[key],
-    fill: "black",
-    x: 0,
-    y: 0,
+    // fill: "white",
+    fill: "rgba(225, 225, 225, 0.3)",
+    x: 10,
+    y: 6,
+    scale: {
+      x: 2,
+      y: 2
+    }
+  });
+  groupSymbol.on('mouseover', function () {//наведение на символ
+    var path=this.children[1];
+    // path.fill("gold");
+    path.fill("rgba(225, 225, 225, 0.9)"); 
+
+    layerSymbol.batchDraw();
+  });
+  groupSymbol.on('mouseout', function () {
+    var path = this.children[1];
+    path.fill("rgba(225, 225, 225, 0.3)");
+    layerSymbol.batchDraw();
   });
 
-//Клик по элементу в панели символов
+
+
+
+
+
+  //Клик по элементу в панели символов
   groupSymbol.on('click', function () {
     TE.selected.sample = this.name();
-    console.log("Клик panel symbol (" + TE.selected.sample+")"); 
+    console.log("Клик panel symbol (" + TE.selected.sample + ")");
     selectSample();
   });
 
@@ -56,10 +79,11 @@ for (var key in path) {
   });
   groupSymbol.add(symbolBox, symbolPath);
 
-  counter++;
   // console.log(counter);
   // console.log(path[key]); 
-  groupSymbol.x(counter * 40 - 40);
+  groupSymbol.x(counter * 60 );
+  counter++;
+  
   groupSymbols.add(groupSymbol);
 }
 
@@ -73,12 +97,14 @@ for (var key in path) {
 
 // set container
 var container = document.createElement('div');
-var rootTE = document.getElementById('TE');
+// var rootTE = document.getElementById('TE');
+var rootTE = document.getElementById('TEpanelB');
 rootTE.appendChild(container);
+//сцена для символов
 var stageSymbol = new Konva.Stage({
   container: container,
-  width: holstW * boxSize,
-  height: 40
+  width: widthScreen,
+  height: 49
 });
 
 layerSymbol.add(groupSymbols);
@@ -124,7 +150,7 @@ function symbolRollback() {
   // console.warn(groupSymbols.getStage().width(), "ширина сцены");
   var x = groupSymbols.x();
   //ширина сцены делйная на ширину образцов
-  var exceeded = groupSymbols.getStage().width() - (counter * 40);
+  var exceeded = groupSymbols.getStage().width() - (counter * 60);
   if (x > 0) {
     // tween.finish();
     // ani(0);
@@ -178,9 +204,9 @@ function symbolWheelScroll(e) {
   } else {
     x = 159;
   };
-  x=groupSymbols.x()+x;
-  var exceeded = groupSymbols.getStage().width() - (counter * 40);
-  if (x > -40) {
+  x = groupSymbols.x() + x;
+  var exceeded = groupSymbols.getStage().width() - (counter * 60);
+  if (x > -60) {
     x = 26;
     // animWheel(x, 0.22, "BackEaseOut"); 
     animWheel(x, 0.22, "StrongEaseOut");
@@ -193,7 +219,7 @@ function symbolWheelScroll(e) {
       }
     }
     setTimeout(func, 210);
-  } else if (x < exceeded - 40) {
+  } else if (x < exceeded - 60) {
     x = exceeded - 26;
     // animWheel(x, 0.22, "BackEaseOut"); 
     animWheel(x, 0.22, "StrongEaseOut");

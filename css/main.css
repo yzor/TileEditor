@@ -1,32 +1,33 @@
 /* only test */
+
+
 /* .fake{
    background:tomato !important; 
 }
 */
 
-.fake::before{
+.fake::before {
   position: absolute;
-content: "";
-background:tomato;
-border-radius: 50%;
-/* left: 0; */
-bottom: 0; 
-right: 10px;
-display: block;
-width: 10px;
-height: 10px;
+  content: "";
+  background: tomato;
+  border-radius: 50%;
+  /* left: 0; */
+  bottom: 0;
+  right: 10px;
+  display: block;
+  width: 10px;
+  height: 10px;
 }
+
+
 /* only test end */
-
-
-
 
 canvas {
   background: red;
 }
 
 canvas {
-  box-shadow: 0 0 0 1px gold;
+  /* box-shadow: 0 0 0 1px gold; */
 }
 
 #palette {
@@ -158,10 +159,9 @@ body {
   background: #607d8b;
   background: #03a9f4;
   background: #333;
+
+  background: rgba(15, 15, 15, 0.445)
 }
-
-
-
 
 
 /*///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -188,6 +188,39 @@ body {
   font-family: "Open Sans", sans-serif;
 }
 
+#TEpanelR,
+#TEpanelL,
+#TEpanelT,
+#TEpanelB {
+  position: fixed;
+  z-index: 1;
+  /* background: red; */
+  /* border: blue 3px solid; */
+  /* min-height: 10px; */
+  /* min-width: 10px; */
+}
+
+#TEpanelR {}
+
+#TEpanelL {
+  height: 100vw;
+}
+
+#TEpanelT {
+  top: 0;
+  width: calc(100vw - 20px);
+  height: 0;
+  opacity: 0.1;
+}
+#TEpanelT:hover{
+  opacity: 1;
+}
+
+#TEpanelB {
+  width: calc(100vw - 20px);
+  bottom: 0;
+}
+
 
 /*правая панель*/
 
@@ -211,9 +244,9 @@ body {
   opacity: 1;
   transition: all 0.15s ease-in-out;
   transition: all 0.15s ease-out;
-  transition: all 0.15s ease-out,opacity 0.45s ease-out;
-  transition: all 0.15s ease-out,opacity 0.30s ease-in;
-  transition: all 0.15s ease-out,opacity 0.30s ease-out;
+  transition: all 0.15s ease-out, opacity 0.45s ease-out;
+  transition: all 0.15s ease-out, opacity 0.30s ease-in;
+  transition: all 0.15s ease-out, opacity 0.30s ease-out;
   /* transition: all 0.15s ease-out,opacity 0.06s ease-out; */
   /* background: gold; */
   transform: scale(1);
