@@ -225,9 +225,9 @@ body {
   /* padding: 0; */
 }
 
-#TEprotect #TEpanelT button:hover {
-  background: #363636fa;
-  background: black;
+ #TEpanelT button:hover {
+  /* background: #363636fa; */
+  /* background: black; */
   border: 1px solid gold;
 }
 

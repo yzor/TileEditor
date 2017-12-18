@@ -55,7 +55,9 @@ layerTiles.on('mousedown mouseover', function (evt) {
         // BD1[Y][X][1]=false;
         // box.fill("red");
         // box.draw();
-      } else if(TE.options.protect){ //клетка отличается от выбранного образца
+      } else if(TE.options.protect){ //клетка отличается от выбранного образца и защита включена
+        //#TODO чтобы анимация не начиналась каждый раз заново - повеситьсчётчик
+       //Если счётчик превышает n нажатий то делать шейк
         console.log('%c%s', 'background: red;', "detect");
         // if (TE.options.protect) { //Если защита включена, то закругляемся
         var $elm = $("#TEprotect")
@@ -64,7 +66,7 @@ layerTiles.on('mousedown mouseover', function (evt) {
           $elm.addClass("detect");
         }, 0);
           // console.log(TE.options.protect);
-          return false;
+          return false;//не продолжать
         // }
       }
 
