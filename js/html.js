@@ -393,6 +393,11 @@ $("#TEprotect").click(function () {
 });
 
 
-
-
-function select(params) {}
+//выбор нумерации(радио)
+$(".num").change(function () {
+  TE.scheme.num = +this.id.replace(/\D+/g, "");
+  console.log(TE.scheme);
+  schemeNumbering();
+  // fastDrag();
+});  
+document.getElementsByName('num')[TE.scheme.num].checked = true; //на старте выделить текущий тип нумерации

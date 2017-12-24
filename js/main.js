@@ -8,10 +8,10 @@ var tool; //инструмент
 //рисование заметок
 var sample; //текущий образец
 
-var holstW = 10; //ширина в клетках 
-var holstH = 10; //высота в клетках 
-var boxSize =50; //размер клетки
-var widthScreen = window.innerWidth-190;
+var holstW = 15; //ширина в клетках 
+var holstH = 10; //высота в клетках  
+var boxSize = 25; //размер клетки
+var widthScreen = window.innerWidth - 190;
 var heightScreen = window.innerHeight;
 
 //TileEditor
@@ -32,14 +32,26 @@ var stageEditor = new Konva.Stage({
 var layerTiles = new Konva.Layer({
 
 
-
+  // grabX = Math.floor(grabX);
 
   // var holstW = 10; //ширина в клетках 
   //var holstH = 30; //высота в клетках 
   //var boxSize = 10; //размер клетки
-  x: widthScreen / 2 - (holstW * boxSize) / 2,
-  y: heightScreen / 2 - (holstH * boxSize) / 2,
-  // draggable: true,
+  x: Math.floor(widthScreen / 2 - (holstW * boxSize) / 2),
+  y: Math.floor(heightScreen / 2 - (holstH * boxSize) / 2),
+  draggable: true,
+  dragBoundFunc: function (pos) {
+    // console.log(pos);
+    layerNum.x(pos.x);
+    layerNum.y(pos.y);
+    layerNum.batchDraw();
+    // layerNum.draw();
+    return {
+      x: pos.x,
+      y: pos.y
+      // y: this.getAbsolutePosition().y
+    }
+  }
   // opacity: 0.1
 });
 

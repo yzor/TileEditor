@@ -18,10 +18,11 @@ for (var i = 0, l = holstH; i < l; i++) {
 
 // layer.on('mousemove', function(evt) {
 //КликКлак
-layerTiles.on('mousedown mouseover', function (evt) {
+layerTiles.on('touchstart mousedown mouseover', function (evt) {
   var box = evt.target;
   var X = box.x() / boxSize;
   var Y = box.y() / boxSize;
+  // console.warn(X,Y,evt.target  ); 
   if (evt.type == "mousedown" || mouseL) { //если мышь нажата
     if (keySpace) { //если нажат пробел
       // layerTiles.draggable(true);//включить перетаскивание
@@ -56,8 +57,9 @@ layerTiles.on('mousedown mouseover', function (evt) {
         // box.fill("red");
         // box.draw();
       } else if(TE.options.protect){ //клетка отличается от выбранного образца и защита включена
-        //#TODO чтобы анимация не начиналась каждый раз заново - повеситьсчётчик
+        //#TODO чтобы анимация не начиналась каждый раз заново - повесить счётчик
        //Если счётчик превышает n нажатий то делать шейк
+       //Если одна и таже клетка второй раз подряд, то делать шейк
         console.log('%c%s', 'background: red;', "detect");
         // if (TE.options.protect) { //Если защита включена, то закругляемся
         var $elm = $("#TEprotect")
@@ -132,6 +134,13 @@ $(document).keydown(function (e) { //нажал клаву
     //#TODO grab, grabbing
     layerTiles.draggable(true); //разрешаем перетаскивать слой с тайлами
   }
+  if (e.which == 16) { //16-шифт
+    e.preventDefault(); //отключить действие по умолчанию
+    console.log('%c%s', 'color: gold;', "↓", e.which);
+    keySpace = true; //нажал
+    document.body.style.cursor = 'move'; //ставим курсор перетаскивания 
+    fastDrag();
+  }
 });
 
 $(document).keyup(function (e) { //отжал клаву 
@@ -140,6 +149,13 @@ $(document).keyup(function (e) { //отжал клаву
     keySpace = false; //отжал 
     document.body.style.cursor = 'default'; //возвращаем курсор
     layerTiles.draggable(false); //запрещаем перетаскивать слой с тайлами
+  }
+
+  if (e.which == 16) {
+    console.log('%c%s', 'color: green;', "↑", e.which);
+    keySpace = false; //отжал 
+    document.body.style.cursor = 'default'; //возвращаем курсор
+    fastDragOFF();
   }
 });
 

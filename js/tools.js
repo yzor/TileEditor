@@ -19,6 +19,9 @@ var TE = {
     autoClear: true, //стирание при повторном нажатии
     markLastDraw: true, //выделять последние нарисованые
     relatedTiles: true //cмежные пикселпи
+  },
+  scheme: {
+    num: 2
   }
 };
 // var sample={}
