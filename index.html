@@ -2,6 +2,7 @@
 <html>
 
 <head>
+  <meta name="viewport" content="width=device-width">
   <meta name="description" content="Konva.js test пути из SVG">
   <script src="js/jquery-3.2.1.min.js"></script>
   <script src="js/konva.min.js"></script>
@@ -22,20 +23,31 @@
     </button>
     <input type="checkbox" name="resize" id="resize" title="Редактирование исходника">
 
-    <input id="num0" type="radio"  name="num" class="num"/> 
+    <input id="num0" type="radio" name="num" class="num" />
     <label for="num0"> num0</label>
     <!-- checked -->
-    <input id="num1" type="radio" name="num" class="num"/>
+    <input id="num1" type="radio" name="num" class="num" />
     <label for="num1"> num1</label>
-    <input id="num2" type="radio"  name="num" class="num"/>
+    <input id="num2" type="radio" name="num" class="num" />
     <label for="num2"> num2</label>
-    <input id="num3" type="radio"  name="num" class="num"/>
+    <input id="num3" type="radio" name="num" class="num" />
     <label for="num3"> num3</label>
-
 
   </div>
   <div id="TEpanelB"></div>
-  <div id="TEpanelL"></div>
+  <div id="TEpanelL">
+    <button id="TEpen" class="a" title="Кисть">К</button> 
+    <button id="TEerase" title="Стёрка">С</button>
+    <button id="TEfii" title="Заливка">З</button>
+    <button id="TEpipette" title="пипетка">П</button>
+    <button id="TEdrag1" title="Рука1 (Spase)">Р</button>
+    <button id="TEdrag2" title="Рука2 (Shift)">Р</button>
+    <button id="TEdrag3" title="Рука3 (Alt)">Р</button>
+    <br><br><br>
+    <button id="zu" title="зум (Ctrl + колесо мышки)">+</button>
+    <button id="zum" title="зум (Ctrl + колесо мышки)">10</button>
+    <button id="zumm" title="зум (Ctrl + колесо мышки)">-</button>
+  </div>
   <div id="TEpanelR">
     <div id="TElayers"></div>
   </div>
@@ -72,7 +84,10 @@
 <script src="js/pen.js"></script>
 <script src="js/sample.js"></script>
 <script src="js/html.js"></script>
+<script src="js/drag.js"></script>
+<script src="js/scheme.js"></script>
 <script src="js/test.js"></script>
+
 
 
 

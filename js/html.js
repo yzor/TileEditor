@@ -117,7 +117,17 @@ function checkFake(params) {
 //изменение размера сцены при изменении окна
 function responsiveStage(params) {
   // console.log("responsiveStage");
-  widthScreen = window.innerWidth - 190;
+  console.log(window.innerWidth);
+  widthScreen = window.innerWidth;
+  if (widthScreen < 631) { //боковое меню
+    widthScreen -= 33;
+  } else {
+    widthScreen -= 190;
+  }
+
+
+
+
   heightScreen = window.innerHeight;
   stageEditor.width(widthScreen);
   stageEditor.height(heightScreen);
@@ -377,10 +387,10 @@ $(".samples").click(function () {
 //Кнопка защиты
 $("#TEprotect").click(function () {
   console.warn(TE.options.protect);
-  if (TE.options.protect){
-    TE.options.protect =false;
+  if (TE.options.protect) {
+    TE.options.protect = false;
     $("#TEprotect").removeClass("on detect");
-  }else{
+  } else {
     TE.options.protect = true;
     $("#TEprotect").addClass("on");
   }
@@ -399,5 +409,54 @@ $(".num").change(function () {
   console.log(TE.scheme);
   schemeNumbering();
   // fastDrag();
-});  
+});
 document.getElementsByName('num')[TE.scheme.num].checked = true; //на старте выделить текущий тип нумерации
+
+
+
+$("button").click(function () {
+  var id = this.id
+  if (id == "TEdrag1" || id == "TEdrag2" || id == "TEdrag3") {
+    console.log("Button (" + this.id + ")");
+    var check = false;
+    if ($(this).hasClass("a")) {
+      $(".a").removeClass("a");
+    } else {
+      check = true;
+      $(".a").removeClass("a");
+      $(this).addClass("a");
+    }
+
+
+
+
+    if (id == "TEdrag1") {
+      if (check) {
+        keySpace = true; //нажал
+        document.body.style.cursor = 'move'; //ставим курсор перетаскивания
+        //#TODO grab, grabbing
+        layerTiles.draggable(true); 
+      } else {
+        keySpace = false; //отжал 
+        document.body.style.cursor = 'default'; //возвращаем курсор
+        layerTiles.draggable(false); //запрещаем перетаскивать слой с тайлами
+      }
+    } else if (id == "TEdrag2") {
+      console.warn("!!!");
+      if (check) {
+        fastDrag()
+      } else {
+        fastDragOFF()
+      }
+    } else if (id == "TEdrag3") {
+      if (check) {
+        fastDrag2()
+      } else {
+        fastDragOFF2()
+      }
+    }
+  } else {
+    console.error("Попробуйте завтра (" + this.id + ")");
+
+  }
+});

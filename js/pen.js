@@ -134,28 +134,42 @@ $(document).keydown(function (e) { //нажал клаву
     //#TODO grab, grabbing
     layerTiles.draggable(true); //разрешаем перетаскивать слой с тайлами
   }
+  console.log(e.which); 
   if (e.which == 16) { //16-шифт
     e.preventDefault(); //отключить действие по умолчанию
     console.log('%c%s', 'color: gold;', "↓", e.which);
-    keySpace = true; //нажал
-    document.body.style.cursor = 'move'; //ставим курсор перетаскивания 
+    // keySpace = true; //нажал
+    // document.body.style.cursor = 'move'; //ставим курсор перетаскивания 
     fastDrag();
+  }
+  if (e.which == 18) { //18-Alt
+    e.preventDefault(); //отключить действие по умолчанию
+    console.log('%c%s', 'color: gold;', "↓", e.which);
+    // keySpace = true; //нажал
+    // document.body.style.cursor = 'move'; //ставим курсор перетаскивания 
+    fastDrag2();
   }
 });
 
 $(document).keyup(function (e) { //отжал клаву 
-  if (e.which == 32) {
+  if (e.which == 32) { //32-пробел
     console.log('%c%s', 'color: green;', "↑", e.which);
     keySpace = false; //отжал 
     document.body.style.cursor = 'default'; //возвращаем курсор
     layerTiles.draggable(false); //запрещаем перетаскивать слой с тайлами
   }
 
-  if (e.which == 16) {
+  if (e.which == 16) { //16-шифт
     console.log('%c%s', 'color: green;', "↑", e.which);
     keySpace = false; //отжал 
     document.body.style.cursor = 'default'; //возвращаем курсор
     fastDragOFF();
+  } 
+  if (e.which == 18) { //18-Alt
+    console.log('%c%s', 'color: green;', "↑", e.which);
+    keySpace = false; //отжал 
+    document.body.style.cursor = 'default'; //возвращаем курсор
+    fastDragOFF2();
   }
 });
 
