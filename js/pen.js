@@ -16,6 +16,8 @@ for (var i = 0, l = holstH; i < l; i++) {
 
 // console.warn(BD1);
 
+
+
 // layer.on('mousemove', function(evt) {
 //КликКлак
 layerTiles.on('touchstart mousedown mouseover', function (evt) {

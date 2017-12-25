@@ -115,7 +115,7 @@ function checkFake(params) {
 
 
 //изменение размера сцены при изменении окна
-function responsiveStage(params) {
+function responsiveStage() {
   // console.log("responsiveStage");
   console.log(window.innerWidth);
   widthScreen = window.innerWidth;
@@ -133,8 +133,9 @@ function responsiveStage(params) {
   stageEditor.height(heightScreen);
   stageSymbol.width(widthScreen);
 }
-window.addEventListener('resize', responsiveStage);
 
+window.addEventListener('resize', responsiveStage);//запускаем при изменении окна
+responsiveStage();//запускаем на старте
 
 
 
