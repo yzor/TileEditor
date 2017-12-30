@@ -11,8 +11,11 @@ var groupSymbols = new Konva.Group({ //группа символов
     }
   }
 });
+
 var counter = 0;
-for (var key in path) {
+for (var key in path2) {
+  // console.log(path2[key][0])
+  // console.error("♠", key);
   var groupSymbol = new Konva.Group({
     name: key,
     scale: {
@@ -21,32 +24,37 @@ for (var key in path) {
     }
   });
   var symbolBox = new Konva.Rect({
-    x:-0.5,
-    y:0.5,
-    width: 60,    
+    x: -0.5,
+    y: 0.5,
+    width: 60,
     height: 50,
     // fill: 'rgba(15, 15, 15, 0.3)',
-    fill: 'rgba(31, 31, 31, 0.94)',   
-    stroke: 'rgba(26, 25, 25, 1)',       
+    fill: 'rgba(31, 31, 31, 0.94)',
+    stroke: 'rgba(26, 25, 25, 1)',
     // stroke: 'rgba(15, 15, 15, 0.3)',
     strokeWidth: 1
   });
   var symbolPath = new Konva.Path({
     //8 9 10 12 bad 
-    data: path[key],
+    // data: path[key],
+    data: path2[key][0],
     // fill: "white",
     fill: "rgba(225, 225, 225, 0.3)",
     x: 10,
     y: 6,
+    // scale: {
+    //   x: 0.025,
+    //   y: 0.025
+    // }
     scale: {
-      x: 2,
-      y: 2
-    }
+      x: 0.04,
+      y: 0.04
+    } 
   });
-  groupSymbol.on('mouseover', function () {//наведение на символ
-    var path=this.children[1];
+  groupSymbol.on('mouseover', function () { //наведение на символ
+    var path = this.children[1];
     // path.fill("gold");
-    path.fill("rgba(225, 225, 225, 0.9)"); 
+    path.fill("rgba(225, 225, 225, 0.9)");
 
     layerSymbol.batchDraw();
   });
@@ -81,11 +89,91 @@ for (var key in path) {
 
   // console.log(counter);
   // console.log(path[key]); 
-  groupSymbol.x(counter * 60 );
+  groupSymbol.x(counter * 60);
   counter++;
-  
+
   groupSymbols.add(groupSymbol);
 }
+/*OLD
+
+var counter = 0;
+for (var key in path) {
+  // console.error("♠", key);
+  var groupSymbol = new Konva.Group({
+    name: key,
+    scale: {
+      // x: 2,
+      // y: 2
+    }
+  });
+  var symbolBox = new Konva.Rect({
+    x: -0.5,
+    y: 0.5,
+    width: 60,
+    height: 50,
+    // fill: 'rgba(15, 15, 15, 0.3)',
+    fill: 'rgba(31, 31, 31, 0.94)',
+    stroke: 'rgba(26, 25, 25, 1)',
+    // stroke: 'rgba(15, 15, 15, 0.3)',
+    strokeWidth: 1
+  });
+  var symbolPath = new Konva.Path({
+    //8 9 10 12 bad
+    data: path[key],
+    // fill: "white",
+    fill: "rgba(225, 225, 225, 0.3)",
+    x: 10,
+    y: 6,
+    scale: {
+      x: 2,
+      y: 2
+    }
+  });
+  groupSymbol.on('mouseover', function () { //наведение на символ
+    var path = this.children[1];
+    // path.fill("gold");
+    path.fill("rgba(225, 225, 225, 0.9)");
+
+    layerSymbol.batchDraw();
+  });
+  groupSymbol.on('mouseout', function () {
+    var path = this.children[1];
+    path.fill("rgba(225, 225, 225, 0.3)");
+    layerSymbol.batchDraw();
+  });
+
+
+
+
+
+
+  //Клик по элементу в панели символов
+  groupSymbol.on('click', function () {
+    TE.selected.sample = this.name();
+    console.log("Клик panel symbol (" + TE.selected.sample + ")");
+    selectSample();
+  });
+
+
+
+
+
+
+  //проверка после перетаскивания, не ушло ли за края
+  groupSymbols.on('dragend', function () {
+    symbolRollback();
+  });
+  groupSymbol.add(symbolBox, symbolPath);
+
+  // console.log(counter);
+  // console.log(path[key]);
+  groupSymbol.x(counter * 60);
+  counter++;
+
+  groupSymbols.add(groupSymbol);
+}
+*/ 
+
 
 
 //mouseover, mouseout, mouseenter, mouseleave

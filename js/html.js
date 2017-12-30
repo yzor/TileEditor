@@ -191,7 +191,7 @@ function updateLayer(layer) {
     // TE.selected.color = element.getAttribute("data-color");
     // element.getAttribute("data-color") = TE.selected.color;
     element.setAttribute("data-color", TE.selected.color); //цвет
-    element.querySelector('.TElayerName').innerHTML = layer + '!'; //новое имя
+    // element.querySelector('.TElayerName').innerHTML = layer + '!!!'; //новое имя
     // element.setAttribute("data-color", "red");
     // console.warn(element);
     if ((element.querySelector('img').src) !== testIMG.src) {
@@ -237,7 +237,8 @@ function addLayer(layer, img) {
 
     var layerName = document.createElement('span'); //имя слоя
     layerName.className = "TElayerName";
-    layerName.innerHTML = layer;
+    // layerName.innerHTML = layer; 
+    layerName.innerHTML = path2[layer][1];  
     layerDiv.appendChild(layerName);
 
     if (img) {
@@ -311,8 +312,12 @@ function selectSample() { //#TODO createSample
   }
 
 
-
-  tilePath.data(path[layer1]); //отрисовываем выбраную фигуру
+//    data: path2[layer1][0],
+  console.warn("▀",layer1);  
+  if (path2[layer1] && path2[layer1][0]){//если есть
+    tilePath.data(path2[layer1][0]); //отрисовываем выбраную фигуру
+  }
+  // tilePath.data(path[layer1]); //отрисовываем выбраную фигуру
   tileBg.fill(TE.selected.color); //отрисовываем выбраный цвет
   remakeSample(); //перерисовать символ
   layerSample.draw(); //отрисовать слой образца (для тестов)

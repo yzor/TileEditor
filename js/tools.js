@@ -1,7 +1,7 @@
 var TE = {
   selected: {
     color: "gold",
-    sample: "s3",
+    sample: "+",
     tools: "pen"
   },
   tools: {

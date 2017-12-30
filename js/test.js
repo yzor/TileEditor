@@ -85,8 +85,10 @@ var tilePath = new Konva.Path({ //фигура
   x: 0,
   y: 0,
   scale: {
-    x: boxSize / 20,
-    y: boxSize / 20
+    // x: boxSize / 20,
+    // y: boxSize / 20,
+    x: boxSize / 1000,//100
+    y: boxSize / 1000
   }
 });
 //цвет выбранного узора
