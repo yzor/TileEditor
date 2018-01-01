@@ -1,3 +1,5 @@
+
+
 var layerSymbol = new Konva.Layer({});
 var groupSymbols = new Konva.Group({ //группа символов
   x: 0,
@@ -183,17 +185,7 @@ for (var key in path) {
 
 
 
-// set container
-var container = document.createElement('div');
-// var rootTE = document.getElementById('TE');
-var rootTE = document.getElementById('TEpanelB');
-rootTE.appendChild(container);
-//сцена для символов
-var stageSymbol = new Konva.Stage({
-  container: container,
-  width: widthScreen,
-  height: 49
-});
+
 
 layerSymbol.add(groupSymbols);
 stageSymbol.add(layerSymbol);

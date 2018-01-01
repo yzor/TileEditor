@@ -8,11 +8,51 @@ var tool; //инструмент
 //рисование заметок
 var sample; //текущий образец
 
-var holstW = 10; //ширина в клетках   
+var holstW = 20; //ширина в клетках   
 var holstH = 10;  //высота в клетках  
 var boxSize = 20; //размер клетки 
 var widthScreen = window.innerWidth - 190;
 var heightScreen = window.innerHeight;
+
+
+
+//изменение размера сцены при изменении окна
+function responsiveStage() {
+  // console.log("responsiveStage");
+  console.log(window.innerWidth);
+  widthScreen = window.innerWidth;
+  if (widthScreen < 631) { //боковое меню
+    widthScreen -= 33;
+  } else {
+    widthScreen -= 190;
+  }
+
+
+
+
+  heightScreen = window.innerHeight;
+  stageEditor.width(widthScreen);
+  stageEditor.height(heightScreen);
+  stageSymbol.width(widthScreen);
+}
+
+window.addEventListener('resize', responsiveStage); //запускаем при изменении окна
+
+//////////////stageSymbol start
+// set container
+var container = document.createElement('div');
+// var rootTE = document.getElementById('TE');
+var rootTE = document.getElementById('TEpanelB');
+rootTE.appendChild(container);
+//сцена для символов
+var stageSymbol = new Konva.Stage({
+  container: container,
+  width: widthScreen,
+  height: 49
+});
+////stageSymbol end
+
+
 
 //TileEditor
 var container = document.createElement('div');
@@ -28,6 +68,12 @@ var stageEditor = new Konva.Stage({
   height: heightScreen //ширина экрана
 
 });
+responsiveStage(); //запускаем на старте
+
+
+
+
+
 
 // var layerTiles = new Konva.FastLayer({
 var layerTiles = new Konva.Layer({
@@ -41,7 +87,7 @@ var layerTiles = new Konva.Layer({
   x: Math.floor(widthScreen / 2 - (holstW * boxSize) / 2),
   y: Math.floor(heightScreen / 2 - (holstH * boxSize) / 2),
   // draggable: true,
-/*   dragBoundFunc: function (pos) {
+  dragBoundFunc: function (pos) {
     // console.log(pos);
     layerNum.x(pos.x);
     layerNum.y(pos.y);
@@ -52,7 +98,7 @@ var layerTiles = new Konva.Layer({
       y: pos.y
       // y: this.getAbsolutePosition().y
     }
-  } */
+  }
   // opacity: 0.1
 });
 

@@ -2,7 +2,8 @@ var TE = {
   selected: {
     color: "gold",
     sample: "+",
-    tools: "pen"
+    tools: "pen",
+    fastTools:false//??? на время нажатия клавиши
   },
   tools: {
     pen: "",
@@ -21,7 +22,8 @@ var TE = {
     relatedTiles: true //cмежные пикселпи
   },
   scheme: {
-    num: 2
+    num: 3,
+    numX:1,
   }
 };
 // var sample={}

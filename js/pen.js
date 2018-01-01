@@ -26,6 +26,7 @@ layerTiles.on('touchstart mousedown mouseover', function (evt) {
   var Y = box.y() / boxSize;
   // console.warn(X,Y,evt.target  ); 
   if (evt.type == "mousedown" || mouseL) { //если мышь нажата
+
     if (keySpace) { //если нажат пробел
       // layerTiles.draggable(true);//включить перетаскивание
       return false; //не продолжать
@@ -47,6 +48,25 @@ layerTiles.on('touchstart mousedown mouseover', function (evt) {
     // console.log(evt);
     var sample = BD1[Y][X][0];
     var color = BD1[Y][X][1];
+    if (TE.selected.tools == "erase") { //если выбран инструмент стёрка
+      if (color || sample) { //если клетка закрашена
+        BD1[Y][X][0] = false;
+        BD1[Y][X][1] = false;
+        // console.warn(box.name() );
+        box.name(TE.selected.sample);//#TODO Смена имени
+        // console.warn(box.name() );
+        // console.log(box);
+        // box.fill(sample);
+        box.fillPatternRepeat("repeat"); 
+        box.fillPatternImage(eraseIMG); //заливаем клетку изображением
+// layerTiles
+        // layerTiles.draw();
+        box.draw();
+      }
+
+
+      return false;
+    }
     if (color || sample) { //(protect) если клетка уже закрашена
       if (sample == TE.selected.sample && color == TE.selected.color) { //клетка==выбраный образец
         //#TODO сдeлать чтобы при нажатии запоминался инструмент(карандаш/стёрка) 
@@ -58,10 +78,10 @@ layerTiles.on('touchstart mousedown mouseover', function (evt) {
         // BD1[Y][X][1]=false;
         // box.fill("red");
         // box.draw();
-      } else if(TE.options.protect){ //клетка отличается от выбранного образца и защита включена
+      } else if (TE.options.protect) { //клетка отличается от выбранного образца и защита включена
         //#TODO чтобы анимация не начиналась каждый раз заново - повесить счётчик
-       //Если счётчик превышает n нажатий то делать шейк
-       //Если одна и таже клетка второй раз подряд, то делать шейк
+        //Если счётчик превышает n нажатий то делать шейк
+        //Если одна и таже клетка второй раз подряд, то делать шейк
         console.log('%c%s', 'background: red;', "detect");
         // if (TE.options.protect) { //Если защита включена, то закругляемся
         var $elm = $("#TEprotect")
@@ -69,8 +89,8 @@ layerTiles.on('touchstart mousedown mouseover', function (evt) {
         setTimeout(function () {
           $elm.addClass("detect");
         }, 0);
-          // console.log(TE.options.protect);
-          return false;//не продолжать
+        // console.log(TE.options.protect);
+        return false; //не продолжать
         // }
       }
 
@@ -88,6 +108,7 @@ layerTiles.on('touchstart mousedown mouseover', function (evt) {
     // console.log(box);
     // box.fill(sample);
     box.fillPatternImage(testIMG); //заливаем клетку изображением
+    
 
     // layer.draw();
     box.draw();
@@ -136,21 +157,21 @@ $(document).keydown(function (e) { //нажал клаву
     //#TODO grab, grabbing
     layerTiles.draggable(true); //разрешаем перетаскивать слой с тайлами
   }
-  console.log(e.which); 
-  if (e.which == 16) { //16-шифт
-    e.preventDefault(); //отключить действие по умолчанию
-    console.log('%c%s', 'color: gold;', "↓", e.which);
-    // keySpace = true; //нажал
-    // document.body.style.cursor = 'move'; //ставим курсор перетаскивания 
-    fastDrag();
-  }
-  if (e.which == 18) { //18-Alt
-    e.preventDefault(); //отключить действие по умолчанию
-    console.log('%c%s', 'color: gold;', "↓", e.which);
-    // keySpace = true; //нажал
-    // document.body.style.cursor = 'move'; //ставим курсор перетаскивания 
-    fastDrag2();
-  }
+  // console.log(e.which); // нажимаемая клавиша   
+  /*   if (e.which == 16) { //16-шифт
+      e.preventDefault(); //отключить действие по умолчанию
+      console.log('%c%s', 'color: gold;', "↓", e.which);
+      // keySpace = true; //нажал
+      // document.body.style.cursor = 'move'; //ставим курсор перетаскивания 
+      fastDrag();
+    }
+    if (e.which == 18) { //18-Alt
+      e.preventDefault(); //отключить действие по умолчанию
+      console.log('%c%s', 'color: gold;', "↓", e.which);
+      // keySpace = true; //нажал
+      // document.body.style.cursor = 'move'; //ставим курсор перетаскивания 
+      fastDrag2();
+    } */
 });
 
 $(document).keyup(function (e) { //отжал клаву 
@@ -161,18 +182,18 @@ $(document).keyup(function (e) { //отжал клаву
     layerTiles.draggable(false); //запрещаем перетаскивать слой с тайлами
   }
 
-  if (e.which == 16) { //16-шифт
-    console.log('%c%s', 'color: green;', "↑", e.which);
-    keySpace = false; //отжал 
-    document.body.style.cursor = 'default'; //возвращаем курсор
-    fastDragOFF();
-  } 
-  if (e.which == 18) { //18-Alt
-    console.log('%c%s', 'color: green;', "↑", e.which);
-    keySpace = false; //отжал 
-    document.body.style.cursor = 'default'; //возвращаем курсор
-    fastDragOFF2();
-  }
+  /*   if (e.which == 16) { //16-шифт
+      console.log('%c%s', 'color: green;', "↑", e.which);
+      keySpace = false; //отжал 
+      document.body.style.cursor = 'default'; //возвращаем курсор
+      fastDragOFF();
+    } 
+    if (e.which == 18) { //18-Alt
+      console.log('%c%s', 'color: green;', "↑", e.which);
+      keySpace = false; //отжал 
+      document.body.style.cursor = 'default'; //возвращаем курсор
+      fastDragOFF2();
+    } */
 });
 
 

@@ -114,28 +114,7 @@ function checkFake(params) {
 
 
 
-//изменение размера сцены при изменении окна
-function responsiveStage() {
-  // console.log("responsiveStage");
-  console.log(window.innerWidth);
-  widthScreen = window.innerWidth;
-  if (widthScreen < 631) { //боковое меню
-    widthScreen -= 33;
-  } else {
-    widthScreen -= 190;
-  }
 
-
-
-
-  heightScreen = window.innerHeight;
-  stageEditor.width(widthScreen);
-  stageEditor.height(heightScreen);
-  stageSymbol.width(widthScreen);
-}
-
-window.addEventListener('resize', responsiveStage);//запускаем при изменении окна
-responsiveStage();//запускаем на старте
 
 
 
@@ -238,7 +217,7 @@ function addLayer(layer, img) {
     var layerName = document.createElement('span'); //имя слоя
     layerName.className = "TElayerName";
     // layerName.innerHTML = layer; 
-    layerName.innerHTML = path2[layer][1];  
+    layerName.innerHTML = path2[layer][1];
     layerDiv.appendChild(layerName);
 
     if (img) {
@@ -312,9 +291,9 @@ function selectSample() { //#TODO createSample
   }
 
 
-//    data: path2[layer1][0],
-  console.warn("▀",layer1);  
-  if (path2[layer1] && path2[layer1][0]){//если есть
+  //    data: path2[layer1][0],
+  console.warn("▀", layer1);
+  if (path2[layer1] && path2[layer1][0]) { //если есть
     tilePath.data(path2[layer1][0]); //отрисовываем выбраную фигуру
   }
   // tilePath.data(path[layer1]); //отрисовываем выбраную фигуру
@@ -326,6 +305,20 @@ function selectSample() { //#TODO createSample
 
 //отрисовываем образец заново
 var testIMG;
+var eraseIMG;
+var eraseBox = new Konva.Rect({
+  width: boxSize,
+  height: boxSize,
+  // fill: "red"  
+  fill: "#1F1F1F"
+});
+var eraseImage = eraseBox.toImage({
+  width: boxSize,
+  height: boxSize,
+  callback: function (img) {
+    eraseIMG = img;
+  }
+});
 
 function remakeSample() {
   console.log("remakeSample");
@@ -411,41 +404,66 @@ $("#TEprotect").click(function () {
 
 //выбор нумерации(радио)
 $(".num").change(function () {
-  TE.scheme.num = +this.id.replace(/\D+/g, "");
+  if (this.getAttribute("name")=="num"){
+    TE.scheme.num = +this.id.replace(/\D+/g, "");
+  }else{
+    TE.scheme.numX = +this.id.replace(/\D+/g, "");
+  }
   console.log(TE.scheme);
   schemeNumbering();
   // fastDrag();
 });
-document.getElementsByName('num')[TE.scheme.num].checked = true; //на старте выделить текущий тип нумерации
+//выделить активыне при загрузке
+$('#num' + TE.scheme.num).attr('checked', 'checked');
+$('#numX' + TE.scheme.numX).attr('checked', 'checked');
 
 
 
+
+//Кнопки
 $("button").click(function () {
   var id = this.id
-  if (id == "TEdrag1" || id == "TEdrag2" || id == "TEdrag3") {
+  if (id == "TEdrag1" ||
+    id == "TEdrag2" ||
+    id == "TEdrag3" ||
+    id == "TEpen" ||
+    id == "TEerase") {
     console.log("Button (" + this.id + ")");
     var check = false;
     if ($(this).hasClass("a")) {
-      $(".a").removeClass("a");
+      // $(".a").removeClass("a");//отключить при повторном нажатии
     } else {
       check = true;
       $(".a").removeClass("a");
       $(this).addClass("a");
     }
+    if (id !== "TEdrag1") {
+      keySpace = false; //отжал 
+      document.body.style.cursor = 'default'; //возвращаем курсор
+      layerTiles.draggable(false); //запрещаем перетаскивать слой с тайлами
+    }
 
 
 
-
-    if (id == "TEdrag1") {
-      if (check) {
-        keySpace = true; //нажал
-        document.body.style.cursor = 'move'; //ставим курсор перетаскивания
-        //#TODO grab, grabbing
-        layerTiles.draggable(true); 
-      } else {
-        keySpace = false; //отжал 
-        document.body.style.cursor = 'default'; //возвращаем курсор
-        layerTiles.draggable(false); //запрещаем перетаскивать слой с тайлами
+    console.warn("←" + TE.selected.tools);
+    if (id == "TEpen") { //вкл карандаш
+      TE.selected.tools = "pen";
+      console.warn("→" + TE.selected.tools);
+    } else if (id == "TEerase") { //вкл стёрка
+      TE.selected.tools = "erase";
+      console.warn("→" + TE.selected.tools);
+    } else if (id == "TEdrag1") { //вкл перемещение
+      TE.selected.tools = "drag";
+      console.warn("→" + TE.selected.tools);
+      keySpace = true; //нажал
+      document.body.style.cursor = 'move'; //ставим курсор перетаскивания
+      //#TODO grab, grabbing
+      layerTiles.draggable(true);
+      if (check) {} else {
+        //перенес
+        // keySpace = false; //отжал 
+        // document.body.style.cursor = 'default'; //возвращаем курсор
+        // layerTiles.draggable(false); //запрещаем перетаскивать слой с тайлами
       }
     } else if (id == "TEdrag2") {
       console.warn("!!!");
@@ -462,7 +480,7 @@ $("button").click(function () {
       }
     }
   } else {
-    console.error("Попробуйте завтра (" + this.id + ")");
+    // console.error("Попробуйте завтра (" + this.id + ")");
 
   }
 });

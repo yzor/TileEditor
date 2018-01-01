@@ -6,42 +6,37 @@
   <meta name="description" content="Konva.js test пути из SVG">
   <script src="js/jquery-3.2.1.min.js"></script>
   <script src="js/konva.min.js"></script>
-  <meta charset="utf-8">
   <link rel="stylesheet" href="css/main.css">
+  <script src="//code.jboxcdn.com/plugins/Confirm/jBox.Confirm.js"></script>
+  <script src="//code.jboxcdn.com/0.4.9/jBox.min.js"></script>
+  <link href="//code.jboxcdn.com/0.4.9/jBox.css" rel="stylesheet">
+  <link href="//code.jboxcdn.com/0.4.9/themes/TooltipDark.css" rel="stylesheet">
+  <link href="https://code.jboxcdn.com/plugins/Confirm/jBox.Confirm.css" rel="stylesheet">
   <title>TE</title>
 </head>
 
 
 <body>
   <div id="TEpanelT">
-    <button id="TEcreate">Создать схему2</button>
+    <button id="TEcreate">Новая схема</button>
     <button id="TEsave">Сохранить</button>
     <button id="TEsetting">Настройки</button>
     <button id="TEprotect" class="on" title="Защита клетки">
       <!-- <input type="checkbox" name="protect" id="protect"> -->
-      <!-- защита клетки -->
+      <!-- защита клетки --> <!-- ←255пробел -->
     </button>
-    <input type="checkbox" name="resize" id="resize" title="Редактирование исходника">
+    <!-- <input type="checkbox" name="resize" id="resize" title="Редактирование исходника"> -->
 
-    <input id="num0" type="radio" name="num" class="num" />
-    <label for="num0"> num0</label>
-    <!-- checked -->
-    <input id="num1" type="radio" name="num" class="num" />
-    <label for="num1"> num1</label>
-    <input id="num2" type="radio" name="num" class="num" />
-    <label for="num2"> num2</label>
-    <input id="num3" type="radio" name="num" class="num" />
-    <label for="num3"> num3</label>
 
   </div>
   <div id="TEpanelB"></div>
   <div id="TEpanelL">
-    <button id="TEpen" class="a" title="Кисть">К</button> 
-    <button id="TEerase" title="Стёрка">С</button>
+    <button id="TEpen" class="a" title="Карандаш"></button>
+    <button id="TEerase" title="Стёрка"></button>
     <!-- <button id="TEfii" title="Заливка">З</button> -->
     <!-- <button id="TEpipette" title="пипетка">П</button> -->
-<button id="TEdrag1" title="Для перемещения зажмите пробел (Spase)">Р</button>
-<button id="TErapo" title="редактирование рапорта">Р</button>
+    <button id="TEdrag1" title="Для перемещения зажмите пробел"></button>
+    <!-- <button id="TErapo" title="редактирование рапорта">Р</button> -->
     <!-- <button id="TEdrag2" title="Рука2 (Shift)">Р</button> -->
     <!-- <button id="TEdrag3" title="Рука3 (Alt)">Р</button> -->
     <!-- <br><br><br> -->
@@ -70,8 +65,55 @@
     <div class="samples" id="sample13"></div>
     <div class="samples" id="sample14"></div>
     <div class="samples" id="sample15"></div>
-
   </div>
+
+  <div style="display: none" id="box-create">
+    Ширина:
+    <input type="number" name="" id="TEh" value="10" size="5">
+    <br>
+    <br> Высота:
+    <input type="number" name="" id="TEw" value="10">
+  </div>
+
+  <div style="display: none" id="box-num">
+    <h4>Вертикальная нумерация</h4>
+    <input id="num3" type="radio" name="num" class="num" />
+    <label for="num3">Все ряды</label>
+    <br>
+    <input id="num2" type="radio" name="num" class="num" />
+    <label for="num2">Только нечётные ряды</label>
+    <br>
+    <input id="num1" type="radio" name="num" class="num" />
+    <label for="num1">Змейкой</label>
+    <br>
+    <input id="num0" type="radio" name="num" class="num" />
+    <label for="num0"> Сверху вниз</label>
+    <br>
+    <br>
+    <h4>Горизонтальная нумерация</h4>
+    <input id="numX1" type="radio" name="numX" class="num" />
+    <label for="numX1">справа налево</label>
+    <br>
+    <input id="numX2" type="radio" name="numX" class="num" />
+    <label for="numX2">слева направо</label>
+    <br>
+    <input id="numX0" type="radio" name="numX" class="num" />
+    <label for="numX0">отключить</label>
+  </div>
+
+  <div style="display: none" id="box-save">
+    <!-- <input type="checkbox" name="" id="" checked>отключить цвета -->
+    <br>
+    <button>Скачать</button>
+  </div>
+
+
+
+
+
+
+
+
 
 </body>
 
