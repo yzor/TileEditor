@@ -3,16 +3,7 @@ var layerAsset = {
 };
 //нажатие на клетку
 
-//#TODO перенести
 
-var BD1 = [];
-for (var i = 0, l = holstH; i < l; i++) {
-  var arr = [];
-  for (var iW = 0, lW = holstW; iW < lW; iW++) {
-    arr[iW] = [];
-  }
-  BD1[i] = arr;
-}
 
 // console.warn(BD1);
 

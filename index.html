@@ -1,30 +1,69 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 
 <head>
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width">
-  <meta name="description" content="Konva.js test пути из SVG">
+  <meta name="description" content=">Online | Редактор схем для вязания спицами, крестиками и ноликами.">
+  <link rel="stylesheet" href="css/main.css">
   <script src="js/jquery-3.2.1.min.js"></script>
   <script src="js/konva.min.js"></script>
-  <link rel="stylesheet" href="css/main.css">
   <script src="//code.jboxcdn.com/plugins/Confirm/jBox.Confirm.js"></script>
   <script src="//code.jboxcdn.com/0.4.9/jBox.min.js"></script>
   <link href="//code.jboxcdn.com/0.4.9/jBox.css" rel="stylesheet">
   <link href="//code.jboxcdn.com/0.4.9/themes/TooltipDark.css" rel="stylesheet">
   <link href="https://code.jboxcdn.com/plugins/Confirm/jBox.Confirm.css" rel="stylesheet">
-  <title>TE</title>
+  <title>Online | Редактор схем для вязания</title>
 </head>
 
 
 <body>
+  <!-- Yandex.Metrika counter -->
+  <script type="text/javascript">
+    (function (d, w, c) {
+      (w[c] = w[c] || []).push(function () {
+        try {
+          w.yaCounter36040260 = new Ya.Metrika({
+            id: 36040260,
+            clickmap: true,
+            trackLinks: true,
+            accurateTrackBounce: true,
+            webvisor: true
+          });
+        } catch (e) {}
+      });
+
+      var n = d.getElementsByTagName("script")[0],
+        s = d.createElement("script"),
+        f = function () {
+          n.parentNode.insertBefore(s, n);
+        };
+      s.type = "text/javascript";
+      s.async = true;
+      s.src = "https://mc.yandex.ru/metrika/watch.js";
+
+      if (w.opera == "[object Opera]") {
+        d.addEventListener("DOMContentLoaded", f, false);
+      } else {
+        f();
+      }
+    })(document, window, "yandex_metrika_callbacks");
+  </script>
+  <noscript>
+    <div>
+      <img src="https://mc.yandex.ru/watch/36040260" style="position:absolute; left:-9999px;" alt="" />
+    </div>
+  </noscript>
+  <!-- /Yandex.Metrika counter -->
   <div id="TEpanelT">
     <button id="TEcreate">Новая схема</button>
     <button id="TEsave">Сохранить</button>
     <button id="TEsetting">Настройки</button>
-    <button id="TEprotect" class="on" title="Защита клетки">
-      <!-- <input type="checkbox" name="protect" id="protect"> -->
-      <!-- защита клетки --> <!-- ←255пробел -->
-    </button>
+    <button id="TEprotect" class="on" title="Защита клетки"> </button>
+    <!-- <input type="checkbox" name="protect" id="protect"> -->
+    <!-- защита клетки -->
+    <!-- ←255пробел -->
+    <!-- </button> -->
     <!-- <input type="checkbox" name="resize" id="resize" title="Редактирование исходника"> -->
 
 
@@ -69,10 +108,10 @@
 
   <div style="display: none" id="box-create">
     Ширина:
-    <input type="number" name="" id="TEh" value="10" size="5">
+    <input type="number" name="" id="TEw" value="10" min="1" max="300" size="5">
     <br>
     <br> Высота:
-    <input type="number" name="" id="TEw" value="10">
+    <input type="number" name="" id="TEh" value="10" min="1" max="300">
   </div>
 
   <div style="display: none" id="box-num">
@@ -101,10 +140,14 @@
     <label for="numX0">отключить</label>
   </div>
 
-  <div style="display: none" id="box-save">
+  <div style="display: n" id="box-save">
     <!-- <input type="checkbox" name="" id="" checked>отключить цвета -->
     <br>
-    <button>Скачать</button>
+    <div id="TEsave-stage"></div>
+    <div id="TEsave-opnion">
+      <button id="TEdownload">Скачать</button>
+    </div>
+
   </div>
 
 
@@ -129,6 +172,7 @@
 <script src="js/html.js"></script>
 <script src="js/drag.js"></script>
 <script src="js/scheme.js"></script>
+<script src="js/save.js"></script>
 <script src="js/test.js"></script>
 
 
