@@ -72,7 +72,7 @@ for (var key in path2) {
 
 
   //Клик по элементу в панели символов
-  groupSymbol.on('click', function () {
+  groupSymbol.on('click tap', function () {
     TE.selected.sample = this.name();
     console.log("Клик panel symbol (" + TE.selected.sample + ")");
     selectSample();

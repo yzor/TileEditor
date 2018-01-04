@@ -1,23 +1,23 @@
-var stageSave, layerSave,qweH,qweW
+var stageSave, layerSave, qweH, qweW
 
 function saveDialog(jBox) {
     qweH = boxSize * (holstH + 2);
     qweW = boxSize * (holstW + 2);
     // jBox.options.width = "60%"; //высота модалки
     // jBox.options.height = "60%"; // ширина модалки
-    
-    console.log("qweH",qweH);
-    console.log("qweW",qweW);
-    console.log("boxSize", boxSize);
-    console.log("holstH", holstH);
-    console.log("holstW", holstW);
+
+    // console.log("qweH",qweH);
+    // console.log("qweW",qweW);
+    // console.log("boxSize", boxSize);
+    // console.log("holstH", holstH);
+    // console.log("holstW", holstW);
 
     jBox.options.minWidth = 200; //высота модалки
-    
-    if (qweH < 200 && qweW>200){
-        jBox.options.minHeight = qweH+61; // ширина модалки
-        
-    }else{
+
+    if (qweH < 200 && qweW > 200) {
+        jBox.options.minHeight = qweH + 61; // ширина модалки
+
+    } else {
         jBox.options.minHeight = 200; // ширина модалки
     }
     jBox.options.width = qweW; //высота модалки
@@ -49,18 +49,29 @@ function saveDialog(jBox) {
     var bg = new Konva.Rect({
         // opacity:0.4,
         height: qweH,
-        width: qweW, 
+        width: qweW,
         fill: '#222'
     });
     layerSave.add(bg); //фон
     // console.error(layerTiles);
-    layerSave.add(layerTiles.getChildren()[0].clone().move({
+    
+    layerSave.add(layerTiles.getChildren()[0].clone({
         x: boxSize,
         y: boxSize
+    }).move({
+        // x: boxSize,
+        // y: boxSize
     })); //тайлы
+
+    layerSave.add(layerRap.getChildren()[0].clone({
+        x: boxSize,
+        y: boxSize
+    })) //рапорт 
+
+
     layerSave.add(layerNum.getChildren()[0].clone().move({
         x: boxSize,
-        y: boxSize
+        y: boxSize 
     })); //линейки
     layerSave.add(layerNum.getChildren()[1].clone().move({
         x: boxSize,
@@ -74,6 +85,7 @@ function saveDialog(jBox) {
         x: boxSize,
         y: boxSize
     })); //линейки
+
     stageSave.add(layerSave);
     layerSave.cache();
 
@@ -85,13 +97,13 @@ function saveDialogSize(params) { //после получения размера
     const H = $(".save-dialog").height();
     stageSave.width(W);
     stageSave.height(H);
-    if (W > qweW){
+    if (W > qweW) {
         stageSave.x((200 - qweW) / 2);
         if (H > qweH) {
             stageSave.y((200 - qweH) / 3);
         }
-    }   
-    
+    }
+
 
     stageSave.draw();
     // console.error($("#TEsave-stage").width(), $(".save-dialog").width(), "### onPosition");

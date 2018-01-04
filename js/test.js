@@ -144,6 +144,7 @@ $(document).ready(function () {
         theme: 'TooltipDark',
         delayOpen: 500, //появление
         delayClose: 200, //исчезание
+        // autoClose:  6000,//автозакрытие//закрываться закрывается, но тогда оно и показывается указанное время, даже когда курсор уже убран от кнопки
         //  title: 'Hurray!',
         position: { //позиция относительно элемента
             x: 'right',
@@ -191,7 +192,8 @@ $(document).ready(function () {
         content: $('#box-num'), //контент
         closeButton: 'box',
         overlay: false, //затемнение
-        draggable: ".jBox-container"
+        draggable: ".jBox-container",
+
         /*         
                 width:275,
                 height: "50%",
@@ -282,7 +284,7 @@ $(document).ready(function () {
                 blockScroll: false,//отключить плокировку прокрутки */
 
     })
-    .open()//автооткрытие
+    // .open()//автооткрытие
     ;
 
 

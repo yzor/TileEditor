@@ -431,10 +431,12 @@ $("button").click(function () {
             document.body.style.cursor = 'move'; //ставим курсор перетаскивания
             //#TODO grab, grabbing
             // layerTiles.cache();
-            
-            layerNum.cache(); 
+
+            layerNum.cache();
+            layerRap.cache();
+
             // layerTiles.getChildren()[0].cache();//костыль 1 (быстрее)
-            layerTiles.cache();  
+            layerTiles.cache();
             layerTiles.batchDraw(); //костыль2, с ним плавнее?
             layerTiles.draggable(true);
             if (check) {} else {
