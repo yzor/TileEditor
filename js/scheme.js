@@ -522,11 +522,12 @@ function schemeNew() {
     var w = $("#TEw").val();
     holstH = +h;
     holstW = +w;
+    fitScreen();
     //#TODO сделать центрирование
     gridTiles(); //отрисовать тайлы
     schemeNumbering(); //отрисовать линейки
     schemeRap();
-    rapResize();
+    // rapResize();
     // console.warn(BD1);
 
     // layerTiles.batchDraw();

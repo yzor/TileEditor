@@ -128,7 +128,14 @@ selectSample(); //активация символа на старте
 
 
 //подогнать под экран
-function fitScreen(params) {}
+function fitScreen() {
+    var qweW = (widthScreen) / (holstW + 3);
+    var qweH = (heightScreen - 70) / (holstH + 3);
+    var qwe = qweW > qweH ? qweH : qweW;// наименьшее частное
+    qwe = qwe > 100 ? 100 : qwe;//не более 100
+    qwe = qwe < 20 ? 20 : qwe;//не менее 20
+    boxSize = Math.round(qwe);//округляем
+}
 
 
 
@@ -141,10 +148,12 @@ function fitScreen(params) {}
 
 
 
-$("#TEh").val("9"); //значение из инпута
-$("#TEw").val("7");
+$("#TEh").val("17"); //поменять значение
+$("#TEw").val("5");
 // boxSize = 40;
 schemeNew();
+// const jBoxCreate = false;
+// markSymbol();
 $(function () {
     jBoxCreate.close();
 

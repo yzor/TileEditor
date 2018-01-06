@@ -26,3 +26,119 @@
       // globalCompositeOperation: 'luminosity',
 
       // globalCompositeOperation: 'difference',
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      // window.addEventListener('wheel', (e) => {
+//   // if (x > 0) {
+//   //   // console.log("ldkjf");
+//   //   x = 20;
+//   //   groupSymbols.to({
+//   //     duration: 0.2,
+//   //     easing: Konva.Easings.StrongEaseOut, //0.3 53
+//   //     x: x,
+//   //   });
+//   //   count++;
+
+//   //   function func() {
+//   //     count--;
+//   //     // console.log(count);
+//   //     if (count == 0) {
+//   //       // console.warn(count);
+//   //       //
+//   //       // count2++;
+//   //       // tween.stop();
+//   //       symbolRollback();
+//   //     }
+//   //   }
+//   //   setTimeout(func, 210);
+//   // } else if (x < 0) {
+//   //   groupSymbols.to({
+//   //     duration: 0.7,
+//   //     easing: Konva.Easings.StrongEaseOut, //0.3 53
+//   //     x: x,
+//   //   });
+//   // }
+
+
+
+//   // groupSymbols.to({
+//   //   duration: 0.7,
+//   //   /*
+//   //     easing: Konva.Easings.ElasticEaseIn, //bad
+//   //     easing: Konva.Easings.BounceEaseIn, //bad
+//   //     easing: Konva.Easings.StrongEaseIn,//bad
+//   //     easing: Konva.Easings.BackEaseIn,//bad
+//   //     easing: Konva.Easings.StrongEaseInOut,//bad
+//   //     easing: Konva.Easings.BounceEaseInOut,//bad
+//   //     easing: Konva.Easings.BackEaseInOut,//bad
+//   //     easing: Konva.Easings.EaseIn,//лучше чем EaseOut
+//   //     easing: Konva.Easings.ElasticEaseInOut, //good (нет)
+//   //     easing: Konva.Easings.EaseInOut,//bad
+//   //     easing: Konva.Easings.BounceEaseOut, //
+//   //   */
+//   //   easing: Konva.Easings.ElasticEaseOut, // 0.5 53 неоч
+//   //   easing: Konva.Easings.BackEaseOut, //
+
+
+//   //   easing: Konva.Easings.EaseOut, //0.4→4
+//   //   easing: Konva.Easings.StrongEaseOut, //0.3 53
+
+//   //   // easing: Konva.Easings.Linear, //Linear 1  70
+//   //   /*
+//   //    */
+
+
+
+//   //   x: x,
+//   // });
+//   // console.log(0);
+
+//   //  tween = new Konva.Tween({
+//   //     node: groupSymbols,
+//   //    easing: Konva.Easings.StrongEaseOut, //0.3 53
+//   //     duration: 0.7,
+//   //     x: x
+//   //     // y: 90,
+//   //     // fill: 'red',
+//   //     // rotation: Math.PI * 2,
+//   //     // opacity: 1,
+//   //     // strokeWidth: 6,
+//   //     // scaleX: 1.5
+//   //   });
+//   // tween.play();
+//   // function func() {
+//   //   count--;
+//   //   if (count == 0) {
+
+//   //     // count2++;
+//   //     // console.log(count);
+//   //     // tween.stop();
+//   //     symbolRollback();
+//   //   }
+//   // }
+//   // setTimeout(func,110);
+
+
+
+//   // var newScale = e.deltaY > 0 ? oldScale * scaleBy : oldScale / scaleBy;
+//   // stage.scale({ x: newScale, y: newScale });
+
+//   // var newPos = {
+//   //   x: -(mousePointTo.x - stage.getPointerPosition().x / newScale) * newScale,
+//   //   y: -(mousePointTo.y - stage.getPointerPosition().y / newScale) * newScale
+//   // };
+//   // stage.position(newPos);
+//   // stage.batchDraw();
+// });

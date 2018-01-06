@@ -201,6 +201,7 @@ input {
 #TEpanelL,
 #TEpanelT,
 #TEpanelB {
+    transition: 100ms;
   position: fixed;
   z-index: 1;
   /* background: red; */
@@ -221,7 +222,8 @@ input {
   width: 32px;
   /* background: #282828; */
   /* background: #282828; */
-  z-index: 1
+  z-index: 1;
+  transition: 100ms;
 }
 
 #TEpanelL button {
@@ -659,4 +661,7 @@ input {
 
 .rap #TEpanelL {
   transform: translateX(-50px);
+}
+  .rap #TEpanelB {
+   transform: translateY(50px);
 }

@@ -227,6 +227,7 @@ function selectSampleOLD() { //#TODO createSample
 }
 //выбор элемента из списка всех узоров
 function selectSample() { //#TODO createSample
+    markSymbol();//пометить в панели символов
     var layer1 = TE.selected.sample; // выбираем текущий символ
     console.log('%c%s', 'color: green;', "selectSample(" + layer1 + ")"); //test
 

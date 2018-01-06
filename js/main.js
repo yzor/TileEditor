@@ -3,7 +3,7 @@ var tool; //инструмент
 var sample; //текущий образец
 var holstW = 3; //ширина в клетках
 var holstH = 3; //высота в клетках
-var boxSize = 50; //размер клетки
+var boxSize = 40; //размер клетки
 var widthScreen = window.innerWidth - 190;
 var heightScreen = window.innerHeight;
 
