@@ -433,6 +433,9 @@ function schemeRap() {
     if (radius < 6) {
         radius = 6;
     }
+    if (radius > 9) {
+        radius = 9;
+    }
     var circleRapEdit = new Konva.Circle({
         name: "cr", // Circle Rap
         x: x + w,
@@ -486,6 +489,13 @@ function rapResize() {
     addAnchor(rapResizeGroup, x + w, y, 'topRight');
     addAnchor(rapResizeGroup, x + w, y + h, 'bottomRight');
     addAnchor(rapResizeGroup, x, y + h, 'bottomLeft');
+    layerRap.getChildren()[0].points([//перерисовать на случай если будет повторный вызов
+        x, y,
+        x + w, y,
+        x + w, y + h,
+        x, y + h,
+        // x, y, // последняя точка как первая, если линия не закрыта. закрыть нельзя
+    ]);
     layerRap.add(rapResizeGroup);
     layerRap.draw();
 

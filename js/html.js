@@ -1,4 +1,4 @@
-// "use strict";
+"use strict";
 //#TODO крестики нолики при выборе нумерации
 
 
@@ -237,8 +237,6 @@ function selectSample() { //#TODO createSample
         var qwe = "red";
         console.log('%c%s', 'background: ' + element.getAttribute("data-color") + ';', element.getAttribute("data-color"));
         TE.selected.color = element.getAttribute("data-color");
-
-
     } else { //Если слоя нет
         console.log('%c%s', 'color: green;', "Элемента нет", element);
         //если слоя нет и нет фэйка, то обновляем цвет
@@ -256,6 +254,7 @@ function selectSample() { //#TODO createSample
     //    data: path2[layer1][0],
     console.warn("▀", layer1);
     if (path2[layer1] && path2[layer1][0]) { //если есть
+        // tilePath.data(path2[layer1][0]); //отрисовываем выбраную фигуру
         tilePath.data(path2[layer1][0]); //отрисовываем выбраную фигуру
     }
     // tilePath.data(path[layer1]); //отрисовываем выбраную фигуру
@@ -390,6 +389,8 @@ $("button").click(function () {
         rapResizeApply();
     } else if (id == "TEcancel") {
         schemeRap();
+    } else if (id == "TErap") {
+        rapResize();
     }
 
 

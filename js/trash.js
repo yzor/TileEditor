@@ -1,3 +1,19 @@
+
+/*
+// get crop
+var crop = image.crop();
+
+// set crop
+image.crop({
+  x: 20,
+  y: 20,
+  width: 20,
+  height: 20
+});*/
+
+
+
+
 // globalCompositeOperation: 'source-over',
       // globalCompositeOperation: 'source-in',
       // globalCompositeOperation: 'source-out',
@@ -142,3 +158,98 @@
 //   // stage.position(newPos);
 //   // stage.batchDraw();
 // });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// var layerAssets = new Konva.Layer();
+// var groupAssets = new Konva.Group({
+//   x: 200,
+//   y: 0,
+//   // width:44,
+//   // height: 44,
+//   fill: "red",
+// });
+// var TEassets={
+//   // red:1,
+//   green:2,
+//   blue:3,
+//   gold:4,
+// }
+// function qqq(params) {
+//   groupAssets.destroyChildren();
+//   groupAssets.y(0);
+//   for (const key in TEassets) {
+//     if (TEassets.hasOwnProperty(key)) {
+//       const element = TEassets[key];
+//       console.warn(key);
+
+//       updateAssets(key)
+//     }
+//   }
+// }
+// qqq();
+// qqq();
+
+
+
+// function updateAssets(p1){
+//   var qwe = groupAssets.width();
+//   console.log(qwe);
+//   groupAssets.width(qwe+30);
+//   var test = new Konva.Rect({
+//     stroke: 'black',
+//     strokeWidth: 2,
+//     // x: qwe,
+//     y: qwe,
+//     width: 20,
+//     height: 20,
+//     fill: p1,
+//     name: p1,
+//     // opacity:0.8,
+//   });
+//   groupAssets.add(test);
+// }
+// updateAssets("red");
+// updateAssets("red");
+// updateAssets("red");
+// updateAssets("red");

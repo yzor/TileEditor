@@ -1,3 +1,58 @@
+var tile = new Konva.Group({
+    // x: 15,
+    // y: 15,
+    // width: 20,//boxSize,
+    // height: 20,//boxSize,
+});
+var layerSample = new Konva.Layer(); //новый слой для образца
+var tilePath = new Konva.Path({ //фигура
+    //8 9 10 12 bad
+    // data: path[TE.selected.sample],
+    fill: "black",
+    x: 0,
+    y: 0,
+    scale: {
+        // x: boxSize / 20,
+        // y: boxSize / 20,
+        x: boxSize / 1000, //100
+        y: boxSize / 1000
+    }
+});
+//цвет выбранного узора
+var tileBg = new Konva.Rect({
+    stroke: 'gold',
+    strokeWidth: 4,
+    x: -1,
+    y: -1,
+    width: boxSize + 2,
+    height: boxSize + 2,
+    fill: "gold",
+    // opacity:0.8,
+});
+var tile = new Konva.Group({
+    x: 25,
+    y: 25,
+    width: boxSize,
+    height: boxSize,
+});
+tile.add(tileBg, tilePath);
+layerSample.add(tile);
+stageEditor.add(layerSample);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 var layerSymbol = new Konva.Layer({});
 
 
