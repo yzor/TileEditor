@@ -2,7 +2,8 @@ var TE = {
   selected: {
     color: "gold",
     sample: "+",
-    tools: "pen",
+    tools: "pen", //#TODO tool
+    oldTool: "pen",
     fastTools:false//??? на время нажатия клавиши
   },
   tools: {
@@ -23,7 +24,8 @@ var TE = {
   },
   scheme: {
     num: 3,
-    numX:1,
+    numX: 1,
+    // rap: {}
   }
 };
 // var sample={}
@@ -31,15 +33,15 @@ var set = {}
 
 
 
-// sample["s4"]=[];  
+// sample["s4"]=[];
 
 //color/yzor/opacity
 
-// console.warn(sample); 
+// console.warn(sample);
 
 
 // var www ;
-//  console.log(www);  
+//  console.log(www);
 
 // console.log(TE);
 

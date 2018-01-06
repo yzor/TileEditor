@@ -2,7 +2,7 @@
 
 
 /* .fake{
-   background:tomato !important; 
+   background:tomato !important;
 }
 */
 
@@ -27,7 +27,7 @@ canvas {
 }
 
 
-/* 
+/*
 canvas {
   box-shadow: 0 0 0 1px gold;
 } */
@@ -190,14 +190,12 @@ body {
   line-height: 16px;
   font-family: "Open Sans", sans-serif;
 }
-  button,
+
+button,
 input {
-    outline: none;
-    cursor: pointer;
+  outline: none;
+  cursor: pointer;
 }
-
-
-
 
 #TEpanelR,
 #TEpanelL,
@@ -238,7 +236,7 @@ input {
 
 #TEpanelL .a {
   /* background: gold; */
-  border:gold solid 2px;
+  border: gold solid 2px;
   color: black;
 }
 
@@ -253,7 +251,6 @@ input {
 
 #TEpanelT button {
   background: #1f1f1f;
-                                  
   background: #000000dc;
   color: white;
   border: 1px solid black;
@@ -288,7 +285,7 @@ input {
 }
 
 #TEprotect.detect {
-  /* 
+  /*
   background: red;
   animation: shake1 0.82s cubic-bezier(.36, .07, .19, .97) both;
   */
@@ -537,6 +534,7 @@ input {
 
 
 /*#TODO фиговое качество*/
+
 #TEpanelL #TEpen {
   background-image: url(https://knithub.ru/scheme/icons.png);
   background-position: -188px -233px;
@@ -559,48 +557,57 @@ input {
 }
 
 
-
 /* tooltip */
-/* .jBox-container{
-   color:black; 
-} */
 
+
+/* .jBox-container{
+   color:black;
+} */
 
 
 /* .jBox-Tooltip .jBox-container,
 .jBox-Tooltip .jBox-pointer:after { */
-  /* border-color: purple; */
-  /* background: rgb(10, 10, 10); */
-  /* color:gold; */
+
+
+/* border-color: purple; */
+
+
+/* background: rgb(10, 10, 10); */
+
+
+/* color:gold; */
+
+
 /* } */
-#box-create{
+
+#box-create {
   /* border:dashed; */
   margin-top: -40px;
-margin-bottom: -20px;
+  margin-bottom: -20px;
   font-size: 14px;
   /* background: red; */
-  color:black;
+  color: black;
   cursor: default;
 }
-#box-create input{
+
+#box-create input {
   cursor: text;
-  border:1px solid rgba(83, 83, 83, 0.493);
+  border: 1px solid rgba(83, 83, 83, 0.493);
   border-radius: 23px;
   width: 60px;
   height: 30px;
   text-align: center;
   font-size: 20px
 }
-#box-num h4{
-/* background: red; */
-margin: 0px 0 7px;
-font-weight:normal;
-font-size: 16px;
+
+#box-num h4 {
+  /* background: red; */
+  margin: 0px 0 7px;
+  font-weight: normal;
+  font-size: 16px;
 }
 
-
-
-#TEsave-stage{
+#TEsave-stage {
   /* background: red; */
   height: 100%;
   width: 100%;
@@ -616,7 +623,8 @@ font-size: 16px;
   /* top: 0; */
   /* position: absolute; */
 }
-#TEsave-opnion{
+
+#TEsave-opnion {
   background: rgba(184, 184, 184, 0.452);
   position: absolute;
   width: calc(100% - 40px);
@@ -625,4 +633,30 @@ font-size: 16px;
   padding: 20px;
   border-bottom-right-radius: 3px;
   border-bottom-left-radius: 3px;
+}
+
+#TEapply {
+  display: none;
+  background: rgb(4, 114, 0) !important;
+}
+
+#TEcancel {
+  display: none;
+  background: rgb(121, 0, 0) !important;
+}
+
+.rap #TEcancel,
+.rap #TEapply {
+  display: inline-block;
+}
+
+.rap #TEsave,
+.rap #TEcreate,
+.rap #TEsetting,
+.rap #TEprotect {
+  display: none;
+}
+
+.rap #TEpanelL {
+  transform: translateX(-50px);
 }

@@ -1,9 +1,9 @@
 //var tilePath, tile, tileBg;
 var tool; //инструмент
 var sample; //текущий образец
-var holstW = 15; //ширина в клетках   
-var holstH = 15; //высота в клетках   
-var boxSize = 20; //размер клетки 
+var holstW = 3; //ширина в клетках
+var holstH = 3; //высота в клетках
+var boxSize = 50; //размер клетки
 var widthScreen = window.innerWidth - 190;
 var heightScreen = window.innerHeight;
 
@@ -89,7 +89,7 @@ function fromIn2(x, y, x2, y2, value) {
     };
     var dx = Math.abs(x - prevPos.x); //смещение относительно предыдущего клика
     var dy = Math.abs(y - prevPos.y); //смещение относительно предыдущего клика
-    //////////////////////////  
+    //////////////////////////
     var pos = {
         x: prevPos.x,
         y: prevPos.y
@@ -167,7 +167,7 @@ function fromIn(x, y, x2, y2, value) {
 
 function draw(x, y, value) {
     if (!value) value = "red"; //если не передано значения то красный
-    if (x > holstW) { //отсев ошибок  
+    if (x > holstW) { //отсев ошибок
         console.error("oops W");
         return;
     } else if (y > holstH) {
@@ -176,14 +176,14 @@ function draw(x, y, value) {
     }
     var n = holstW * (y - 1) + x - 1;
     var box = layerTiles.children[n];
-    // console.log(box); 
+    // console.log(box);
     box.fill(value);
     box.draw();
 }
 
 function draw2(x, y, value) {
     if (!value) value = "red"; //если не передано значения то красный
-    if (x > holstW) { //отсев ошибок  
+    if (x > holstW) { //отсев ошибок
         console.error("oops W");
         return;
     } else if (y > holstH) {

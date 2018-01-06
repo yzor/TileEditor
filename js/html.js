@@ -57,7 +57,7 @@ function repainted(layer) {
     //   });
 
 
-    // list[i].fillPatternImage(testIMG); 
+    // list[i].fillPatternImage(testIMG);
     // console.log(testIMG);
 
 
@@ -84,7 +84,7 @@ function removeLayer(layer) {
 
 //проверка на существование данного символа в массиве
 function checkSample(layer) {
-    // console.log("checkSample →(",layer,")");  
+    // console.log("checkSample →(",layer,")");
     for (var i = 0, l = BD1.length; i < l; i++) {
         for (var iW = 0, lW = BD1[0].length; iW < lW; iW++) {
             // console.error(BD1[i][iW][0]);
@@ -115,7 +115,7 @@ function checkFake(params) {
 //#TODO selectSample надо вызывать из updateLayer или addLayer
 //соответствено их переиминовать
 //вызывать updateLayer вместо selectSample
-//и когда готово будет изображение перерисовывать вставлять в html 
+//и когда готово будет изображение перерисовывать вставлять в html
 
 
 
@@ -147,7 +147,7 @@ function updateLayer(layer) {
         $(".act").removeClass("act"); //удалить класс .act
         // element.className = "TElayer act" //проставить у текущего элемент
         $(element).addClass("act");
-    } else { //Если слоя нет 
+    } else { //Если слоя нет
         console.warn("нету", layer);
         checkFake(layer);
         addLayer(layer, testIMG);
@@ -168,7 +168,7 @@ function addLayer(layer, img) {
         var layerDiv = document.createElement('div'); //слой
         layerDiv.id = layer;
         layerDiv.className = "TElayer act pulse fake"; //pulse
-        // layerDiv.className = "TElayer fake"; //pulse 
+        // layerDiv.className = "TElayer fake"; //pulse
         // console.warn(layerDiv.className);
         // console.warn(layerDiv.classList);
 
@@ -177,7 +177,7 @@ function addLayer(layer, img) {
 
         var layerName = document.createElement('span'); //имя слоя
         layerName.className = "TElayerName";
-        // layerName.innerHTML = layer; 
+        // layerName.innerHTML = layer;
         layerName.innerHTML = path2[layer][1];
         layerDiv.appendChild(layerName);
 
@@ -223,7 +223,7 @@ function selectSampleOLD() { //#TODO createSample
     tileBg.fill(TE.selected.color); //отрисовываем выбраный цвет
     remakeSample(); //перерисовать символ
     layerSample.draw(); //отрисовать слой образца (для тестов)
-    // addLayer(TE.selected.sample); 
+    // addLayer(TE.selected.sample);
 }
 //выбор элемента из списка всех узоров
 function selectSample() { //#TODO createSample
@@ -238,7 +238,7 @@ function selectSample() { //#TODO createSample
         TE.selected.color = element.getAttribute("data-color");
 
 
-    } else { //Если слоя нет 
+    } else { //Если слоя нет
         console.log('%c%s', 'color: green;', "Элемента нет", element);
         //если слоя нет и нет фэйка, то обновляем цвет
         checkFake(layer1);
@@ -261,7 +261,7 @@ function selectSample() { //#TODO createSample
     tileBg.fill(TE.selected.color); //отрисовываем выбраный цвет
     remakeSample(); //перерисовать символ
     layerSample.draw(); //отрисовать слой образца (для тестов)
-    // addLayer(layer1); 
+    // addLayer(layer1);
 }
 
 //отрисовываем образец заново
@@ -270,7 +270,7 @@ var eraseIMG;
 var eraseBox = new Konva.Rect({
     width: boxSize,
     height: boxSize,
-    // fill: "red"  
+    // fill: "red"
     fill: "#1F1F1F"
 });
 var eraseImage = eraseBox.toImage({
@@ -293,24 +293,24 @@ function remakeSample() {
             updateLayer(TE.selected.sample, testIMG); //#TODO  не нужен второй параметр?
             repainted(TE.selected.sample); //обновить все такие-же
             /*
-              // addLayer(TE.selected.sample,"https://makeagif.com/images/logo.svg"); 
-              // addLayer(TE.selected.sample,img); 
+              // addLayer(TE.selected.sample,"https://makeagif.com/images/logo.svg");
+              // addLayer(TE.selected.sample,img);
               // console.error(img);
-              
-              // addLayer(TE.selected.sample,img); 
+
+              // addLayer(TE.selected.sample,img);
               // var element = document.getElementById("panelR");
               // var qweImg = document.createElement('img');
               // console.log(qweImg);
               // element.appendChild(img);
-              
-              
+
+
               // var IM = document.createElement('img');
               // IM.src = 'https://makeagif.com/images/logo.svg';
               // // element.appendChild(image);
               // console.log(IM);
-              
+
               //https://makeagif.com/images/logo.svg
-              
+
               // console.log(testIMG);
               // test.fillPatternImage(testIMG);
               // test.draw();
@@ -328,7 +328,7 @@ function remakeSample() {
 $(document).on("click", '.TElayer', function () {
     console.log("Клик panel layer", this);
     TE.selected.sample = this.id; //устанавливаем активный символ из слоя
-    TE.selected.color = this.getAttribute("data-color"); //устанавливаем активный цвет из слоя 
+    TE.selected.color = this.getAttribute("data-color"); //устанавливаем активный цвет из слоя
     $(".act").removeClass("act"); //удаляем метку активного слоя
     $(this).addClass("act"); //ставим метку текущему слою
     selectSample(); //перерисовка символа
@@ -385,7 +385,13 @@ $("button").click(function () {
     var id = this.id
     if (id == "TEdownload") {
         downloadImg();
+    } else if (id == "TEapply") {
+        rapResizeApply();
+    } else if (id == "TEcancel") {
+        schemeRap();
     }
+
+
     //Сохранение изображения
     if (id == "TEsave") {
         // console.warn("сохранить ");
@@ -408,7 +414,7 @@ $("button").click(function () {
             $(this).addClass("a");
         }
         if (id !== "TEdrag1") { //Если не перетаскивание
-            keySpace = false; //отжал 
+            keySpace = false; //отжал
             document.body.style.cursor = 'default'; //возвращаем курсор
             layerTiles.draggable(false); //запрещаем перетаскивать слой с тайлами
             layerNum.clearCache();
@@ -441,7 +447,7 @@ $("button").click(function () {
             layerTiles.draggable(true);
             if (check) {} else {
                 //перенес
-                // keySpace = false; //отжал 
+                // keySpace = false; //отжал
                 // document.body.style.cursor = 'default'; //возвращаем курсор
                 // layerTiles.draggable(false); //запрещаем перетаскивать слой с тайлами
             }
