@@ -1,3 +1,4 @@
+// "use strict";
 var stageSave, layerSave, qweH, qweW
 
 function saveDialog(jBox) {
@@ -54,7 +55,7 @@ function saveDialog(jBox) {
     });
     layerSave.add(bg); //фон
     // console.error(layerTiles);
-    
+
     layerSave.add(layerTiles.getChildren()[0].clone({
         x: boxSize,
         y: boxSize
@@ -66,12 +67,12 @@ function saveDialog(jBox) {
     layerSave.add(layerRap.getChildren()[0].clone({
         x: boxSize,
         y: boxSize
-    })) //рапорт 
+    })) //раппорт
 
 
     layerSave.add(layerNum.getChildren()[0].clone().move({
         x: boxSize,
-        y: boxSize 
+        y: boxSize
     })); //линейки
     layerSave.add(layerNum.getChildren()[1].clone().move({
         x: boxSize,

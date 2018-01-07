@@ -1,3 +1,4 @@
+"use strict";
 var tile = new Konva.Group({
     // x: 15,
     // y: 15,
@@ -36,8 +37,8 @@ var tile = new Konva.Group({
     height: boxSize,
 });
 tile.add(tileBg, tilePath);
-layerSample.add(tile);
-stageEditor.add(layerSample);
+// layerSample.add(tile);
+// stageEditor.add(layerSample);
 
 
 
@@ -58,11 +59,11 @@ var layerSymbol = new Konva.Layer({});
 
 
 
-var groupSymbols = new Konva.Group({ //группа символов
+var groupSymbols = new Konva.Group({ //группа палитры символов
     x: 0,
     y: 0,
     draggable: true, //перетаскивание
-    dragDistance: 10, //смещение после которого включать перетаскивание
+    dragDistance: 14, //смещение после которого включать перетаскивание
     dragBoundFunc: function (pos) {
         return {
             x: pos.x,
@@ -135,6 +136,9 @@ for (var key in path2) {
         TE.selected.sample = this.id(); //####♦
         // markSymbol();
         selectSample();
+        $('#TEpen').trigger('click');
+        // alert("klj");
+
 
 
 

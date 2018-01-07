@@ -1,3 +1,4 @@
+"use strict";
 //Слой для тайлов
 // var layerTiles = new Konva.FastLayer({
 var layerTiles = new Konva.Layer({
@@ -128,6 +129,7 @@ var layerNum = new Konva.Layer({
 });
 
 function schemeNumbering() {
+    layerNum.clearCache();
     layerNum.destroyChildren(); //очистить слой
     layerNum.x(layerTiles.x()); //переместить слой
     layerNum.y(layerTiles.y()); //к слою тайлов
@@ -335,11 +337,11 @@ function schemeNumbering() {
     layerNum.draw();
 }
 
-//рапорт
+//раппорт
 var layerRap = new Konva.Layer();
 
 function schemeRap() {
-    $("body").removeClass("rap");//удалить класс рапорта, на случай если вызывается при отмене редактирования
+    $("body").removeClass("rap"); //удалить класс раппорта, на случай если вызывается при отмене редактирования
     layerRap.destroyChildren(); //очистить слой
     layerRap.x(layerTiles.x()); //переместить слой
     layerRap.y(layerTiles.y()); //к слою тайлов
@@ -347,13 +349,13 @@ function schemeRap() {
     var colorRapA = "black";
 
     var x, y, w, h;
-    if (TE.scheme.rap) {
+    if (TE.scheme.rap) { //если раппорт есть
         var r = TE.scheme.rap;
         x = r.x;
         y = r.y;
         w = r.w;
         h = r.h;
-    } else {
+    } else { //иначе рисуем во всю схему
         x = 0;
         y = 0;
         w = holstW * boxSize;
@@ -373,7 +375,7 @@ function schemeRap() {
         closed: true, // если закрывать, то ставить fillEnabled:false
         fillEnabled: false, //отключить заливку дабы  не перекрывать тайлы
         // tension:   0.102 ,//искажение линии
-        strokeHitEnabled: false, //если false то клики проходят сквозь рапорт
+        strokeHitEnabled: false, //если false то клики проходят сквозь раппорт
         // draggable: true,
         // opacity:0.7,
 
@@ -409,12 +411,12 @@ function schemeRap() {
             lineCap: 'round',//скругл
             strokeWidth: boxSize/5  ,
 
-            рапорт в 4 точки
+            раппорт в 4 точки
             dash: [0, boxSize/4],
             lineCap: 'round',//скругл
             strokeWidth: boxSize/5  ,
 
-            рапорт точками в пересечениях
+            раппорт точками в пересечениях
             dash: [0, boxSize],
             lineCap: 'round',
             strokeWidth: 10, */
@@ -436,7 +438,7 @@ function schemeRap() {
     if (radius > 9) {
         radius = 9;
     }
-    var circleRapEdit = new Konva.Circle({
+    var circleRapEdit = new Konva.Circle({ //точка кнопка на раппорте
         name: "cr", // Circle Rap
         x: x + w,
         y: y,
@@ -444,12 +446,26 @@ function schemeRap() {
         fill: colorRap,
         stroke: colorRapA,
         strokeWidth: 5,
-
         strokeWidth: 1.5,
-
-
         // opacity:0.3
     });
+    // add hover styling
+    circleRapEdit.on('mouseover', function () {
+        var layer = this.getLayer();
+        document.body.style.cursor = 'pointer';
+        this.radius(circleRapEdit.radius() + 2);
+        // this.setStrokeWidth(circleRapEdit.radius()*2);
+        layer.draw();
+    });
+    circleRapEdit.on('mouseout', function () {
+        var layer = this.getLayer();
+        document.body.style.cursor = 'default';
+        // this.setStrokeWidth(2);
+        this.radius(circleRapEdit.radius() - 2);
+        // layer.draw();
+        layerRap.draw();
+    });
+
     circleRapEdit.on('mousedown touchstart', function () {
         rapResize();
     });
@@ -463,23 +479,25 @@ function schemeRap() {
 
 function rapResize() {
     $("body").addClass("rap"); //добавить класс в тело
-    layerRap.get('.rr').destroy(); //удалить группу ресайза - если вдруг осталась
-    layerRap.get('.cr').hide(); //скрыть кнопку на рапорте
-    layerRap.getChildren()[0].stroke("#2196f3");
+    // layerTiles.cache();//закешировать слой тайлов
+    layerTiles.draggable(true);//включить перетаскивание
+    layerRap.get('.rr').destroy(); //удалить старую группу ресайза - если вдруг осталась
+    layerRap.get('.cr').hide(); //скрыть кнопку на раппорте
+    layerRap.getChildren()[0].stroke("#2196f3"); //изменяем цвет раппорта
     TE.selected.oldTool = TE.selected.tools; //сохранить инструмент чтобы потом вернуть
     TE.selected.tools = "rap"; //изменить инструмент
-    var rapResizeGroup = new Konva.Group({
+    let rapResizeGroup = new Konva.Group({
         name: "rr" //Rap Resize
         // draggable: true
     });
-    var x, y, h, w;
-    if (TE.scheme.rap) {
-        var r = TE.scheme.rap;
+    let x, y, h, w;//параметры раппорта
+    if (TE.scheme.rap) {//Если раппорт есть
+        let r = TE.scheme.rap;
         x = r.x;
         y = r.y;
         w = r.w;
         h = r.h;
-    } else {
+    } else {//иначе во всю схему
         x = 0;
         y = 0;
         w = holstW * boxSize;
@@ -489,30 +507,27 @@ function rapResize() {
     addAnchor(rapResizeGroup, x + w, y, 'topRight');
     addAnchor(rapResizeGroup, x + w, y + h, 'bottomRight');
     addAnchor(rapResizeGroup, x, y + h, 'bottomLeft');
-    layerRap.getChildren()[0].points([//перерисовать на случай если будет повторный вызов
+    layerRap.getChildren()[0].points([ //перерисовать линию на случай если будет повторный вызов
         x, y,
         x + w, y,
         x + w, y + h,
         x, y + h,
-        // x, y, // последняя точка как первая, если линия не закрыта. закрыть нельзя
+        // x, y, // последняя точка как первая, если линия не закрыта.
     ]);
-    layerRap.add(rapResizeGroup);
-    layerRap.draw();
 
-
-
-
-
+    layerRap.clearCache()
+        .add(rapResizeGroup)
+        .draw();
 } // rapResize();
 function rapResizeApply(params) {
     TE.selected.tools = TE.selected.oldTool; //возвращаем инструмент
-    TE.scheme.rap = newRap;//Забираем данные нового рапорта
-    schemeRap();//рисуем рапорт
+    TE.scheme.rap = newRap; //Забираем данные нового раппорта
+    schemeRap(); //рисуем раппорт
     // $("body").removeClass("rap");
-    // layerRap.get('.rr').destroy(); //удалить группу изменения рапорта
+    // layerRap.get('.rr').destroy(); //удалить группу изменения раппорта
     // var circleRap = layerRap.get('.cr')
     // circleRap.show();
-    // if (newRap) circleRap.x(newRap.x + newRap.w).y(newRap.y) //кнопка на рапорте
+    // if (newRap) circleRap.x(newRap.x + newRap.w).y(newRap.y) //кнопка на раппорте
     // layerRap.draw();
 }
 
@@ -526,6 +541,11 @@ function rapResizeApply(params) {
 
 //создание новой схемы
 function schemeNew() {
+    layerTiles.clearCache();
+    TE.scheme = {
+        num: 3,
+        numX: 1,
+    }; //очистка данных от предыдущей схемы
     // boxSize = 50;
     // console.warn(BD1);
     var h = $("#TEh").val(); //значение из инпута
@@ -537,6 +557,7 @@ function schemeNew() {
     gridTiles(); //отрисовать тайлы
     schemeNumbering(); //отрисовать линейки
     schemeRap();
+    selectSample();
     // rapResize();
     // console.warn(BD1);
 
@@ -544,8 +565,8 @@ function schemeNew() {
     // layerNum.batchDraw();
     // layerRap.batchDraw();
 
+
     stageEditor.draw();
-    // console.clear();
 }
 
 stageEditor.add(layerTiles, layerNum, layerRap);

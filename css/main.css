@@ -201,7 +201,7 @@ input {
 #TEpanelL,
 #TEpanelT,
 #TEpanelB {
-    transition: 100ms;
+  transition: 100ms;
   position: fixed;
   z-index: 1;
   /* background: red; */
@@ -652,6 +652,25 @@ input {
   display: inline-block;
 }
 
+.rap #TEpanelL {
+  transform: translateX(-50px);
+}
+
+.rap #TEpanelB {
+  transform: translateY(50px);
+}
+
+.over #TEnaw {
+  display: inline-block;
+}
+
+
+/* скрыть кнопки  */
+
+#TEnaw,
+
+/* скыть кнопки перемещения к углу если схема маленькая */
+
 .rap #TEsave,
 .rap #TEcreate,
 .rap #TEsetting,
@@ -659,9 +678,55 @@ input {
   display: none;
 }
 
-.rap #TEpanelL {
-  transform: translateX(-50px);
+#TEnaw {
+  position: relative;
+  top: 10px;
+  margin: 5px 0 0 0;
+  top: 2px;
+  left: 5px;
+  width: 30px;
+  height: 20px;
 }
-  .rap #TEpanelB {
-   transform: translateY(50px);
+
+#TEnaw button {
+  padding: 0;
+  border-radius: 0;
+  /* background: blue; */
+  margin: 0 !important;
+  width: 20px;
+  height: 15px;
+  display: inline-block;
+  font-size: 11px;
+  position: absolute;
+}
+
+#TEnaw #TEtl {
+  top: 0;
+  left: 0;
+  border-top-left-radius: 4px;
+}
+
+#TEnaw #TEtr {
+  top: 0;
+  left: 19px;
+  border-top-right-radius: 4px;
+}
+
+#TEnaw #TEbl {
+  top: 14px;
+  left: 0;
+  border-bottom-left-radius: 4px;
+}
+
+#TEnaw #TEbr {
+  top: 14px;
+  left: 19px;
+  border-bottom-right-radius: 4px;
+}
+
+#TEnaw:hover,
+#TEtl:hover,
+#TEtr:hover,
+#TEbl:hover {
+  z-index: 1;
 }

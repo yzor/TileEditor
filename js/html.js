@@ -3,21 +3,6 @@
 
 
 
-//следующий цвет из списка
-var listColors = ["#ffc107", "#2196f3", "#ff5722", "#cddc39", "#e91e63", "#4caf50", "#ffeb3b", "#9c27b0", "#009688", "#3f51b5", "#f44336", "#8bc34a", "#673ab7", "#ff9800", "#00bcd4", "#795548", "#9e9e9e", "#607d8b", "#03a9f4"]
-// listColors = ["red", "green", "blue"]
-// listColors = ["red", "orange", "gold", "green", "cyan", "blue", "indigo"]
-
-function nextColor() {
-    //#TODO пройтись по списку всех слоёв и удалить цвета которые используются,
-    //далее использовать 1 цвет из списка
-
-
-    var color = listColors.shift()
-    listColors.push(color);
-    TE.selected.color = color;
-    console.log("nextColors('" + color + "')");
-} //nextColor();
 
 //Перекрашивание всех элкментов выбранного типа
 function repainted(layer) {
@@ -227,7 +212,8 @@ function selectSampleOLD() { //#TODO createSample
 }
 //выбор элемента из списка всех узоров
 function selectSample() { //#TODO createSample
-    markSymbol();//пометить в панели символов
+    markSymbol(); //пометить в панели символов
+    $('#TEpen').trigger('click');//клик по карандашу#TODO сделать нормально:0)
     var layer1 = TE.selected.sample; // выбираем текущий символ
     console.log('%c%s', 'color: green;', "selectSample(" + layer1 + ")"); //test
 
@@ -385,14 +371,21 @@ $("button").click(function () {
     var id = this.id
     if (id == "TEdownload") {
         downloadImg();
-    } else if (id == "TEapply") {
+    } else if (id == "TEapply") {//применить(раппорт)
         rapResizeApply();
-    } else if (id == "TEcancel") {
+    } else if (id == "TEcancel") {//отмена(рапорт)
         schemeRap();
-    } else if (id == "TErap") {
+    } else if (id == "TErap") {//редактировать раппорт
         rapResize();
+    } else if (id == "TEtl") {//перейти к углу
+        moveToCorner("tl");
+    } else if (id == "TEtr") {//перейти к углу
+        moveToCorner("tr");
+    } else if (id == "TEbl") {//перейти к углу
+        moveToCorner("bl");
+    } else if (id == "TEbr") {//перейти к углу
+        moveToCorner("br");
     }
-
 
     //Сохранение изображения
     if (id == "TEsave") {
@@ -401,6 +394,7 @@ $("button").click(function () {
         // downloadURI(dataURL, 'Схема.jpg' );
         // downloadURI(dataURL, 'Схема.png' );
     }
+
     if (id == "TEdrag1" ||
         id == "TEdrag2" ||
         id == "TEdrag3" ||
@@ -420,6 +414,7 @@ $("button").click(function () {
             document.body.style.cursor = 'default'; //возвращаем курсор
             layerTiles.draggable(false); //запрещаем перетаскивать слой с тайлами
             layerNum.clearCache();
+            // layerRap.clearCache();
         }
 
 

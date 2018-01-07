@@ -1,4 +1,4 @@
-'use strict'
+"use strict";
 
 var layerAsset = {
 
@@ -29,6 +29,7 @@ layerTiles.on('mousedown mouseover touchmove touchstart', function (evt) {
             sample = BD1[Y][X][0],
             color = BD1[Y][X][1],
             tool = TE.selected.tools;
+        if (tool == "rap") return false;//[END]Раппорт
         if (evt.evt.ctrlKey) { //[END]CTRL
             // console.log('%c%s', 'color: gold;', evt.evt.ctrlKey);
             if (sample) {
@@ -67,12 +68,13 @@ layerTiles.on('mousedown mouseover touchmove touchstart', function (evt) {
                     return false;
                 }
                 // return false;
-            } else if (TE.options.protect && tool !== "pen-"){ //[END]символ иной, защита включена И  не включено стирание
+            } else if (TE.options.protect && tool !== "pen-") { //[END]символ иной, защита включена И  не включено стирание
                 //#TODO чтобы анимация не начиналась каждый раз заново - повесить счётчик
                 //Если счётчик превышает n нажатий то делать шейк
                 //Если одна и таже клетка второй раз подряд, то делать шейк
                 // console.log('%c%s', 'background: red;', "detect");
                 // if (TE.options.protect) { //Если защита включена, то закругляемся
+                TE.selected.tools = "pen+";//включить режим рисования, дабы если мышь передвинется на закрашеную активным цветом клетку - не включался режим стирания
                 var $elm = $("#TEprotect")
                 $elm.removeClass("detect");
                 setTimeout(function () {
@@ -83,7 +85,6 @@ layerTiles.on('mousedown mouseover touchmove touchstart', function (evt) {
                 // }
             } else if (tool !== "pen-") { //если не включен режим стёрки, тогда включаем закрашивание и закрашиваем клетку
                 if (tool == "pen") TE.selected.tools = "pen+";
-                console.log("♦ ☼");
                 box.name(TE.selected.sample) //записать имя в бокс(?)
                     .fillPatternImage(testIMG) //заливаем клетку изображением
                     .draw(); //перерисовываем бокс поверх
